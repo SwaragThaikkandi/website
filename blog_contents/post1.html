@@ -6,7 +6,7 @@
   <title>കടൽ</title>
   <link rel="stylesheet" href="assets/css/main.css" />
 
-  <!-- Animated gradient background -->
+  <!-- Wave background CSS -->
   <style>
     html, body {
       margin: 0;
@@ -15,28 +15,73 @@
       overflow-x: hidden;
     }
     body {
-      background: linear-gradient(45deg, #1a2a6c, #b21f1f, #fdbb2d);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
+      position: relative;
+      background: #1e3d59; /* deep-sea base color */
       color: #fff;
+      font-family: sans-serif;
     }
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+
+    /* Container for wave layers */
+    .wave-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
     }
-    /* Make content wrapper transparent */
+
+    /* Common wave styles */
+    .wave {
+      position: absolute;
+      bottom: 0;
+      width: 200%;   /* twice width for seamless looping */
+      height: 20%;   /* adjust height to taste */
+      background-repeat: repeat-x;
+      background-position: 0 bottom;
+      opacity: 0.6;
+      animation: move-wave 10s linear infinite;
+    }
+
+    /* Individual layers */
+    .wave1 {
+      background-image: url("data:image/svg+xml,%3Csvg width='1600' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23f0f4f8' d='M0 100 Q400 50 800 100 T1600 100 L1600 200 L0 200 Z'/%3E%3C/svg%3E");
+      opacity: 0.3;
+      bottom: 0;
+      animation-duration: 12s;
+    }
+    .wave2 {
+      background-image: url("data:image/svg+xml,%3Csvg width='1600' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%2378a1bb' d='M0 120 Q400 80 800 120 T1600 120 L1600 200 L0 200 Z'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      bottom: 10px;
+      animation-duration: 8s;
+    }
+    .wave3 {
+      background-image: url("data:image/svg+xml,%3Csvg width='1600' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%235f7d99' d='M0 140 Q400 100 800 140 T1600 140 L1600 200 L0 200 Z'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      bottom: 20px;
+      animation-duration: 5s;
+    }
+
+    @keyframes move-wave {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Content wrapper */
     #wrapper {
-      background: rgba(0,0,0,0.5);
+      position: relative;
       min-height: 100%;
       display: flex;
       flex-direction: column;
+      background: rgba(0, 0, 0, 0.5);
     }
-    /* Push footer to bottom */
     #main {
       flex: 1;
       padding: 2rem;
     }
+
     /* Bottom nav links */
     .bottom-nav {
       text-align: center;
@@ -53,9 +98,16 @@
     }
   </style>
 </head>
-<body class="is-preload">
-  <div id="wrapper">
 
+<body class="is-preload">
+  <!-- wave layers -->
+  <div class="wave-wrapper">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+  </div>
+
+  <div id="wrapper">
     <header id="header">
       <!-- your existing header/nav here -->
     </header>
@@ -71,20 +123,17 @@
           <p> ചിലപ്പോൾ കടൽ എന്തൊക്കെയോ മറയ്ക്കാറുണ്ട്, പക്ഷെ അപ്പോൾ ആണ് അതിന്റെ ആഴം കുറച്ചുകൂടി വ്യക്തമാവുന്നത്. ഒരു ചെറു കുട്ടിയെപ്പോലെ കാറ്റിന്റെ താളത്തിനൊത്തു അത് ചിരിച്ചുകൊണ്ടിരുന്നു. സന്ധ്യയിൽ ചെറു വേദനയുടെ വർണം എടുത്തണിയുമ്പോൾ അവനും ചെറുതായി എന്തിനെന്നില്ലാതെ വേദനിച്ചു. അപ്പോൾ ചെറു തുള്ളികൾ ആ കടലിനോടു ചേരും. രാത്രിയിലും അതിന്റെ സംഗീതം കേൾക്കാൻ കാതോര്ക്കും. </p>
           <p> കടൽ പുറത്തായിരുന്നോ ഉള്ളിലായിരുന്നോ എന്നവനറിയില്ല. പക്ഷെ, അത് എന്തൊക്കെയോ ആയിരുന്നു. അത് മനസ്സാവാത്തവർ അവനെ ഭ്രാന്തനെന്നു വിളിച്ചു. തനിക്കു കല്പിച്ചു തന്ന ആ വിചിത്രമായ സ്വാതന്ത്ര്യം അന്ന് മുതൽ അവൻ ആസ്വദിച്ചിരുന്നു. ആ തീരത്ത് ഒരു വിചിത്ര വസ്തു പോലെ. അവിടം ഒരു തുരുത്തായിരുന്നു. അനേകം ആത്മാക്കൾ അലയുന്ന തുരുത്തിൽ അവൻ ഏകാകിയായി.  </p>
           <p> ഒരു രാത്രി കഴിഞ്ഞപ്പോൾ അവനെ പിന്നെ ആരും ആ തീരത്ത് കണ്ടില്ല. ആ രാത്രി കടൽ വല്ലാതെ തിളങ്ങുന്നത് തോണിയിലിരുന്ന് കണ്ടവരുണ്ട്. പ്രക്ഷുബ്ധമായ കടൽ എന്തിനോ വേണ്ടി തിരയുന്നത് പോലെ തോന്നി. അവൻ എങ്ങോട്ട് പോയെന്നറിയില്ല, ആരും കണ്ടിട്ടില്ല. കാല്പാടുകളൊക്കെ എന്നോ കടൽ മായ്ചുകളഞ്ഞിരുന്നു. </p>
-        <!-- remaining paragraphs -->
       </article>
     </div>
 
-    <!-- Bottom links -->
     <div class="bottom-nav">
-      <a href="index.html">&larr; Home</a>
-      <a href="blog.html">Blog &rarr;</a>
+      <a href="https://swaragthaikkandi.github.io/website">&larr; Home</a>
+      <a href="https://swaragthaikkandi.github.io/website/#Blog">Blog &rarr;</a>
     </div>
 
     <footer id="footer">
       <p>&copy; Swarag Thaikkandi. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
     </footer>
-
   </div>
 
   <!-- Scripts -->
