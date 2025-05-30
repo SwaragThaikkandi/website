@@ -125,6 +125,31 @@
           <p> ഒരു രാത്രി കഴിഞ്ഞപ്പോൾ അവനെ പിന്നെ ആരും ആ തീരത്ത് കണ്ടില്ല. ആ രാത്രി കടൽ വല്ലാതെ തിളങ്ങുന്നത് തോണിയിലിരുന്ന് കണ്ടവരുണ്ട്. പ്രക്ഷുബ്ധമായ കടൽ എന്തിനോ വേണ്ടി തിരയുന്നത് പോലെ തോന്നി. അവൻ എങ്ങോട്ട് പോയെന്നറിയില്ല, ആരും കണ്ടിട്ടില്ല. കാല്പാടുകളൊക്കെ എന്നോ കടൽ മായ്ചുകളഞ്ഞിരുന്നു. </p>
       </article>
     </div>
+    <!-- 1) Put this where you want comments to appear: -->
+<div id="disqus_thread" style="margin-top:2rem;"></div>
+
+<!-- 2) Add this below, just before </body>: -->
+<script>
+  /**
+   *  REPLACE 'your-shortname' with your Disqus site shortname.
+   *  Be sure you’ve registered at https://disqus.com/admin/create/
+   */
+  var disqus_config = function () {
+    this.page.url = window.location.href;
+    this.page.identifier = 'post1'; // unique identifier for this page
+  };
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://your-shortname.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>
+  Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
 
     <div class="bottom-nav">
       <a href="https://swaragthaikkandi.github.io/website">&larr; Home</a>
