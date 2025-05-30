@@ -135,6 +135,58 @@
       <p>&copy; Swarag Thaikkandi.</p>
     </footer>
   </div>
+  <!-- just before your closing </article> -->
+
+<!-- VIEW COUNTER -->
+<div id="view-counter" style="margin-top:2rem; font-size:0.9rem; color: #ffd700;">
+  Views: <span id="view-count">…</span>
+</div>
+
+<!-- SHARE BUTTONS -->
+<div class="share-buttons" style="margin-top:1rem; text-align:center;">
+  <a href="#" id="share-twitter" target="_blank" style="margin:0 0.5rem; text-decoration:none;">X</a>
+  <a href="#" id="share-facebook" target="_blank" style="margin:0 0.5rem; text-decoration:none;">Facebook</a>
+  <a href="#" id="share-linkedin" target="_blank" style="margin:0 0.5rem; text-decoration:none;">LinkedIn</a>
+  <a href="#" id="share-email" style="margin:0 0.5rem; text-decoration:none;">✉️ Email</a>
+</div>
+
+<script>
+// ——— VIEW COUNTER via CountAPI ———
+// Replace 'swaragthaikkandi-website' and 'post1' with your own namespace & key
+const namespace = 'swaragthaikkandi-website';
+const key       = 'post1';
+const url       = `https://api.countapi.xyz/hit/${namespace}/${key}`;
+
+fetch(url)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('view-count').textContent = data.value;
+  })
+  .catch(() => {
+    document.getElementById('view-count').textContent = '–';
+  });
+
+// ——— SHARE LINKS ———
+const pageURL   = encodeURIComponent(window.location.href);
+const pageTitle = encodeURIComponent(document.title);
+
+// Twitter
+document.getElementById('share-twitter').href =
+  `https://twitter.com/intent/tweet?url=${pageURL}&text=${pageTitle}`;
+
+// Facebook
+document.getElementById('share-facebook').href =
+  `https://www.facebook.com/sharer/sharer.php?u=${pageURL}`;
+
+// LinkedIn
+document.getElementById('share-linkedin').href =
+  `https://www.linkedin.com/sharing/share-offsite/?url=${pageURL}`;
+
+// Email
+document.getElementById('share-email').href =
+  `mailto:?subject=${pageTitle}&body=${pageURL}`;
+</script>
+
 
   <!-- Scripts -->
   <script src="assets/js/jquery.min.js"></script>
