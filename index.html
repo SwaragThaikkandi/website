@@ -1,473 +1,842 @@
-<!DOCTYPE HTML>
-<!--
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Swarag Thaikkandi</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Swarag Thaikkandi | PhD Researcher</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #1abc9c;
+            --light: #ecf0f1;
+            --dark: #34495e;
+            --gray: #95a5a6;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--accent);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        #header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(26, 188, 156, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(52, 152, 219, 0.1) 0%, transparent 20%);
+            z-index: 0;
+        }
+        
+        .profile-container {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 30px;
+        }
+        
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            margin: 0 auto 25px;
+            position: relative;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .header-content h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Navigation */
+        .main-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+        
+        .nav-container ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav-container li {
+            margin: 0;
+        }
+        
+        .nav-container a {
+            display: block;
+            padding: 20px 25px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            color: var(--dark);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-container a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-container a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        
+        .nav-container a:hover::after {
+            width: 80%;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .section-header p {
+            max-width: 700px;
+            margin: 30px auto 0;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        /* Card Styles */
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-img {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .card:hover .card-img img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Work Section */
+        .pub-card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .pub-card:hover {
+            transform: translateX(10px);
+        }
+        
+        .pub-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .pub-card .authors {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .pub-card .journal {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .pub-card .links a {
+            display: inline-block;
+            margin-right: 15px;
+            font-weight: 600;
+        }
+        
+        /* Education */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: var(--accent);
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 100%;
+            clear: both;
+        }
+        
+        .timeline-content {
+            position: relative;
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            width: calc(50% - 40px);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            float: left;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            float: right;
+        }
+        
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            transform: rotate(45deg);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-left: -20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            z-index: 1;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(26, 188, 156, 0.3);
+        }
+        
+        .btn:hover {
+            background: #16a085;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 188, 156, 0.4);
+        }
+        
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-icon:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 80px);
+                float: right !important;
+                margin-left: 80px;
+            }
+            
+            .timeline-content::after {
+                left: -10px !important;
+                right: auto !important;
+            }
+            
+            .timeline-icon {
+                left: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .nav-container ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-container li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-container a {
+                padding: 15px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img src="images/142320710.png" alt="Swarag Thaikkandi">
+                </div>
+                <div class="header-content">
+                    <h1>Hi, I'm Swarag</h1>
+                    <p>Step into this quiet nook of the web, where a once wide-eyed physics student wandered upon the idea that our world is woven by perception—and now drifts deeper into the boundless realms of the mind and sometimes getting carried away by diffusions…</p>
+                </div>
+            </div>
+        </div>
+    </header>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="nav-container">
+                <ul>
+                    <li><a href="#intro">Intro</a></li>
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#codes">Codes & Packages</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-				<!-- Header -->
-					<header id="header">
-						<div style="
-                                                   width: 120px;
-                                                   height: 120px;
-                                                   overflow: hidden;
-                                                   border-radius: 50%;
-                                                   display: inline-block;
-                                                ">
-							<img
-                                                          src="images/142320710.png"
-                                                          alt="Site Logo"
-                                                          style="
-                                                            width: 100%;
-                                                            height: 100%;
-                                                            object-fit: cover;
-                                                            display: block;
-                                                          "
-                                                  />
-						</div>
-						<div class="content">
-							<div class="inner">
-								<h1>Hi, I'm Swarag</h1>
-								<p>Step into this quiet nook of the web, where a once wide-eyed physics student wandered upon the idea that our world is woven by perception—and now drifts deeper into the boundless realms of the mind and sometimes getting carried away by diffusions…</p>
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<li><a href="#intro">Intro</a></li>
-								<li><a href="#work">Work</a></li>
-								<li><a href="#about">About</a></li>
-								<li><a href="#contact">Contact</a></li>
-								<li><a href="#Codes_Packages">Codes & Packages</a></li>
-								<li><a href="#Blog">Blog</a></li>
-								<!--<li><a href="#elements">Elements</a></li>-->
-							</ul>
-						</nav>
-					</header>
+    <!-- Main Content -->
+    <main>
+        <!-- Intro Section -->
+        <section id="intro" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Intro</h2>
+                    <p>My journey from physics to neuroscience and cognitive modeling</p>
+                </div>
+                <div class="card animate">
+                    <div class="card-img">
+                        <img src="images/mohammad-aqhib-2ve5-Q673Pk-unsplash.jpg" alt="Intro Image">
+                    </div>
+                    <div class="card-content">
+                        <p>Raised in the heart of a village in Kerala, my academic journey emerged from contemplations on the meaning of self, life, and the enigma of reality. What particularly fascinated me was the intricate interplay between financial decisions, especially in a middle-class setting, and the pervasive spread of superstitious beliefs. The juxtaposition of significant life choices made with little deliberation alongside the propagation of unfounded beliefs challenged my understanding of objective truth. It compelled me to reevaluate reality through the lens of subjective beliefs, resembling the adaptive nature of a Bayesian model. This dual fascination forms the core of my research interests in neuroscience, decision-making, and cognitive modelling.</p>
+                        <p> I first fell for physics during my early days at IISER Pune. In my second year, I found myself wondering if there might be something even deeper than the physical reality we probe with equations and experiments—what truly shapes the world we perceive? A conversation with a humanities professor led me to Carlos Castaneda’s Teachings of Don Juan. His vivid accounts of encounters with “allies”—plant-based guides that usher one into realms beyond the ordinary—challenged everything I thought I knew about perception and inspired me to explore how we construct our reality. </p>
+                        <p> I began to see humans as extraordinary pattern–seeking engines, constantly weaving the threads of perception to fill in gaps and make sense of an ever-shifting world. That insight drew me into the study of attractor dynamics in working memory—delving into how Hopf networks can model the brain’s ability to stabilize fleeting thoughts and return to core ideas like a cognitive lodestar. From there, my curiosity branched out: I explored how decision-making unfolds within those dynamic landscapes, how our emotions color each choice, and how the social tapestry we inhabit shapes the patterns we recognize and the realities we construct. </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-				<!-- Main -->
-					<div id="main">
+        <!-- Work Section -->
+        <section id="work" class="section" style="background: #f8f9fa;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Research & Publications</h2>
+                    <p>My contributions to neuroscience and cognitive research</p>
+                </div>
+                
+                <div class="pub-card animate">
+                    <h3>Interpersonal heart rate synchrony predicts effective information processing in a naturalistic group decision-making task</h3>
+                    <p class="authors">Sharika, K. M., Thaikkandi, S., Nivedita, & Platt, M. L.</p>
+                    <p class="journal">Proceedings of the National Academy of Sciences 121(21), e2313801121</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.1073/pnas.2313801121" target="_blank">View Publication</a>
+                    </div>
+                </div>
+                
+                <h3 style="margin: 40px 0 20px;">Conference Presentations</h3>
+                
+                <div class="pub-card animate delay-1">
+                    <h3>Interpersonal heart rate synchrony predicts effective group performance in a naturalistic collective decision-making task</h3>
+                    <p class="authors">Sharika, K. M., Thaikkandi, S., Nivedita, & Platt, M. L.</p>
+                    <p class="journal">Social and Affective Neuroscience Conference 2024. Toronto.</p>
+                    <div class="links">
+                        <a href="https://socialaffectiveneuro.org/wp-content/uploads/2024/04/SANS-Conference-2024_Abstract-Book_April-8.pdf" target="_blank">View Abstract Book</a>
+                    </div>
+                </div>
+                
+                <div class="pub-card animate delay-2">
+                    <h3>Effect of valence & uncertainty on reinforcement learning</h3>
+                    <p class="authors">Thaikkandi, S., & Sharika, K. M.</p>
+                    <p class="journal">Annual Conference of Cognitive Sciences (ACCS) 10. India.</p>
+                    <div class="links">
+                        <a href="https://www.cgs.iitk.ac.in/user/accs10/files/ACCSX_Booklet.pdf" target="_blank">View Booklet</a>
+                    </div>
+                </div>
+                
+                <h3 style="margin: 40px 0 20px;">Pre-Prints</h3>
+                
+                <div class="pub-card animate delay-3">
+                    <h3>Analyzing time series of unequal durations using Multidimensional Recurrence Quantification Analysis (MdRQA): validation and implementation using Python</h3>
+                    <p class="authors">Thaikkandi, S., Sharika, K. M.</p>
+                    <p class="journal">arXiv preprint arXiv:2307.11675</p>
+                    <div class="links">
+                        <a href="https://arxiv.org/abs/2307.11675" target="_blank">View on arXiv</a>
+                    </div>
+                </div>
+                
+                <div class="pub-card animate delay-4">
+                    <h3>Mine is Merrier: A Process Description of the Robust In-Group Bias Across Contexts Using Perceptual-Matching Task</h3>
+                    <p class="authors">Baba, A., Thaikkandi, S., Verma, A.</p>
+                    <p class="journal">PsyArxive preprint</p>
+                    <div class="links">
+                        <a href="https://doi.org/10.31234/osf.io/s4vg8" target="_blank">View Preprint</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-						<!-- Intro -->
-							<article id="intro">
-								<h2 class="major">Intro</h2>
-								<span class="image main"><img src="images/mohammad-aqhib-2ve5-Q673Pk-unsplash.jpg" alt="" /></span>
-								<p>Raised in the heart of a village in Kerala, my academic journey emerged from contemplations on the meaning of self, life, and the enigma of reality. What particularly fascinated me was the intricate interplay between financial decisions, especially in a middle-class setting, and the pervasive spread of superstitious beliefs. The juxtaposition of significant life choices made with little deliberation alongside the propagation of unfounded beliefs challenged my understanding of objective truth. It compelled me to reevaluate reality through the lens of subjective beliefs, resembling the adaptive nature of a Bayesian model. This dual fascination forms the core of my research interests in neuroscience, decision-making, and cognitive modelling.</p> <p> I first fell for physics during my early days at IISER Pune. In my second year, I found myself wondering if there might be something even deeper than the physical reality we probe with equations and experiments—what truly shapes the world we perceive? A conversation with a humanities professor led me to Carlos Castaneda’s Teachings of Don Juan. His vivid accounts of encounters with “allies”—plant-based guides that usher one into realms beyond the ordinary—challenged everything I thought I knew about perception and inspired me to explore how we construct our reality. </p> <p> I began to see humans as extraordinary pattern–seeking engines, constantly weaving the threads of perception to fill in gaps and make sense of an ever-shifting world. That insight drew me into the study of attractor dynamics in working memory—delving into how Hopf networks can model the brain’s ability to stabilize fleeting thoughts and return to core ideas like a cognitive lodestar. From there, my curiosity branched out: I explored how decision-making unfolds within those dynamic landscapes, how our emotions color each choice, and how the social tapestry we inhabit shapes the patterns we recognize and the realities we construct. </p>
-							</article>
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>About Me</h2>
+                    <p>My academic background and journey</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item animate">
+                        <div class="timeline-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Indian Institute of Science Education and Research (IISER), Pune</h3>
+                            <p><strong>Location:</strong> Pune, Maharashtra, India</p>
+                            <p><em>
+                                An autonomous institute under the Ministry of Education, Government of India.<br>
+                                Declared as an Institute of National Importance by an Act of Parliament.<br>
+                                Premier institute dedicated to research and teaching in the basic sciences.
+                            </em></p>
+                            <p><strong>Program:</strong> BS-MS Dual Degree (Division of Biology)</p>
+                            <p><strong>Duration:</strong> 2018–2023</p>
+                            <p><strong>CGPA:</strong> 8.2 / 10</p>
+                            <p><strong>Master's Thesis:</strong> "Effect of Uncertainty and Valence in Reinforcement Learning" (GPA: 9.1 / 10)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-						<!-- Work -->
-							<article id="work">
-								<h2 class="major">Work</h2>
-								<span class="image main"><img src="images/salah-ait-mokhtar-8ftdGkpz3zw-unsplash.jpg" alt="" /></span>
-								<h2>Peer-Reviewed Publications</h2>
-                                                                <ul>
-                                                                  <li>
-                                                                  <em>Interpersonal heart rate synchrony predicts effective information processing in a naturalistic group decision-making task</em><br>
-                                                                  Sharika, K. M., Thaikkandi, S., Nivedita, & Platt, M. L.<br>
-                                                                  <strong>Proceedings of the National Academy of Sciences</strong> <code>121(21)</code>, e2313801121
-                                                                  <a href="https://doi.org/10.1073/pnas.2313801121" target="_blank" rel="noopener">https://doi.org/10.1073/pnas.2313801121</a>
-                                                                </li>
-                                                               </ul>
-                                                               <h2>Conference Presentations/Poster</h2>
-                                                                <ul>
-                                                                  <li>
-                                                                      <em>Interpersonal heart rate synchrony predicts effective
-                                                                      group performance in a naturalistic collective decision-making task.</em><br>
-                                                                      Sharika, K. M., Thaikkandi, S., Nivedita, & Platt, M. L.<br>
-                                                                      <strong>Social and Affective Neuroscience Conference 2024. Toronto.</strong>
-                                                                      <a href="https://socialaffectiveneuro.org/wp-content/uploads/2024/04/SANS-Conference-2024_Abstract-Book_April-8.pdf" target="_blank" rel="noopener">Booklet</a>
+        <!-- Contact Section -->
+        <section id="contact" class="section" style="background: #f8f9fa;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Contact Me</h2>
+                    <p>Get in touch for collaborations or inquiries</p>
+                </div>
+                
+                <div class="contact-form animate">
+                    <form method="post" action="#">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" class="form-control" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                    
+                    <div class="social-icons">
+                        <a href="https://x.com/swarag_t" class="social-icon" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://in.linkedin.com/in/swarag-t-2b998a1b5" class="social-icon" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/SwaragThaikkandi" class="social-icon" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://orcid.org/0009-0007-8101-2378" class="social-icon" target="_blank">
+                            <i class="fab fa-orcid"></i>
+                        </a>
+                        <a href="https://www.researchgate.net/profile/Swarag-Thaikkandi" class="social-icon" target="_blank">
+                            <i class="fab fa-researchgate"></i>
+                        </a>
+                        <a href="https://www.scopus.com/authid/detail.uri?authorId=58537975000" class="social-icon" target="_blank">
+                            <i class="fas fa-book"></i>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=fg81xJQAAAAJ&hl=en" class="social-icon" target="_blank">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                                                                 </li>
-                                                                 <li>
-                                                                      <em>Effect of valence & uncertainty on reinforcement learning</em><br>
-                                                                      Thaikkandi, S., & Sharika, K. M.<br>
-                                                                      <strong>Annual Conference of Cognitive Sciences (ACCS) 10. India.</strong>
-                                                                      <a href="https://www.cgs.iitk.ac.in/user/accs10/files/ACCSX_Booklet.pdf" target="_blank" rel="noopener">Booklet</a>
+        <!-- Codes & Packages -->
+        <section id="codes" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Codes & Packages</h2>
+                    <p>Open-source tools and libraries I've developed</p>
+                </div>
+                
+                <div class="card animate">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Code Package">
+                    </div>
+                    <div class="card-content">
+                        <h3>SMdRQA</h3>
+                        <p>SMdRQA is a Python package designed for conducting Sliding Window Multidimensional Recurrent Quantification Analysis (SMdRQA). This specialized analysis technique allows researchers to explore temporal patterns and dependencies in multidimensional data sequences using a sliding window approach.</p>
+                        <div class="links">
+                            <a href="https://swaragthaikkandi.github.io/SMdRQA/" target="_blank">Documentation</a>
+                            <a href="https://pypi.org/project/SMdRQA/" target="_blank">PyPI</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                                                                 </li>
-                                                               </ul>
-                                                               <h2>Pre-Prints</h2>
-                                                                <ul>
-                                                                  <li>
-                                                                      <em>Analyzing time series of unequal durations using Multidimensional Recurrence Quantification Analysis (MdRQA): validation 
-                                                                      and implementation using Python</em><br>
-                                                                      Thaikkandi, S., Sharika, K. M.<br>
-                                                                      <strong>arXiv preprint</strong> arXiv:2307.11675<br>
-                                                                      <a href="https://arxiv.org/abs/2307.11675" target="_blank" rel="noopener">https://arxiv.org/abs/2307.11675</a>
+        <!-- Blog Section -->
+        <section id="blog" class="section" style="background: #f8f9fa;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Blog</h2>
+                    <p>Personal reflections and writings</p>
+                </div>
+                
+                <div class="card animate">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" alt="Blog Image">
+                    </div>
+                    <div class="card-content">
+                        <h3>കടൽ</h3>
+                        <p>കടൽ പുറത്തായിരുന്നോ ഉള്ളിലായിരുന്നോ എന്നവനറിയില്ല. പക്ഷെ, അത് എന്തൊക്കെയോ ആയിരുന്നു.</p>
+                        <div class="links">
+                            <a href="blog_contents/post1.html">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-                                                                 </li>
-                                                                 <li>
-                                                                      <em>Mine is Merrier: A Process Description of the Robust
-                                                                      In-Group Bias Across Contexts Using Perceptual-Matching Task.</em><br>
-                                                                      Baba, A., Thaikkandi, S., Verma, A.<br>
-                                                                      <strong>PsyArxive preprint</strong>
-                                                                      <a href="https://doi.org/10.31234/osf.io/s4vg8" target="_blank" rel="noopener">https://doi.org/10.31234/osf.io/s4vg8</a>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Swarag Thaikkandi. All rights reserved.</p>
+        </div>
+    </footer>
 
-                                                                 </li>
-                                                               </ul>
-							</article>
-							
-
-						<!-- About -->
-							<article id="about">
-								<h2 class="major">About</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-								<h2>Education</h2>
-<div class="education-entry" style="display: flex; align-items: flex-start; gap: 16px;">
-  <img src="images/iiser-logo.png" alt="IISER Logo" style="width: 80px; height: 80px; object-fit: contain;" />
-  
-  <div>
-    <h3>Indian Institute of Science Education and Research (IISER), Pune</h3>
-    <p><strong>Location:</strong> Pune, Maharashtra, India</p>
-    <p><em>
-      An autonomous institute under the Ministry of Education, Government of India.<br>
-      Declared as an Institute of National Importance by an Act of Parliament.<br>
-      Premier institute dedicated to research and teaching in the basic sciences.
-    </em></p>
-    <p><strong>Program:</strong> BS-MS Dual Degree (Division of Biology)</p>
-    <p><strong>Duration:</strong> 2018–2023</p>
-    <p><strong>CGPA:</strong> 8.2 / 10</p>
-    <p><strong>Master’s Thesis:</strong> “Effect of Uncertainty and Valence in Reinforcement Learning” (GPA: 9.1 / 10)</p>
-  </div>
-</div>
-							</article>
-
-						<!-- Contact -->
-							<article id="contact">
-								<h2 class="major">Contact</h2>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
-										</div>
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
-										</div>
-										<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="4"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-								<ul class="icons">
-									<li><a href="https://x.com/swarag_t" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="https://in.linkedin.com/in/swarag-t-2b998a1b5" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-									<li><a href="https://github.com/SwaragThaikkandi" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-									<li><a href="https://orcid.org/0009-0007-8101-2378" class="icon brands fa-orcid"><span class="label">ORCID</span></a></li>
-									<li><a href="https://www.researchgate.net/profile/Swarag-Thaikkandi" class="icon brands fa-researchgate"><span class="label">ResearchGate</span></a></li>
-									<li><a href="https://www.scopus.com/authid/detail.uri?authorId=58537975000" class="icon brands scopus-icon">
-    <img src="images/scopus.png" alt="Scopus Logo" style="width: 24px; height: 24px; vertical-align: middle;" />
-    <span class="label">Scopus</span>
-  </a></li>
-                                                                        <li><a href="https://scholar.google.com/citations?user=fg81xJQAAAAJ&hl=en" class="icon brands google-scholar-icon">
-    <img
-      src="images/google-scholar.png"
-      alt="Google Scholar Logo"
-      style="width:24px; height:24px; vertical-align:middle;"
-    />
-    <span class="label">Google Scholar</span>
-  </a></li>
-								</ul>
-							</article>
-							<article id="Codes_Packages">
-								<h2 class="major">Codes & Packages</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-								<h2>SMdRQA</h2>
-								<p> SMdRQA is a Python package designed for conducting Sliding Window Multidimensional Recurrent Quantification Analysis (SMdRQA). 
-									This specialized analysis technique allows  to explore temporal patterns and dependencies in multidimensional data sequences using a sliding window approach. </p>
-								<ul> 
-								         <li>
-								             <a href="https://swaragthaikkandi.github.io/SMdRQA/" target="_blank" rel="noopener">SMdRQA Documentation</a>
-								         </li>
-								         <li>
-								             <a href="https://pypi.org/project/SMdRQA/" target="_blank" rel="noopener">PyPI</a>
-								         </li>
-								</ul>
-							</article>
-						        <article id="Blog">
-								<h2 class="major">Blog Posts</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-								<a href="blog_contents/post1.html"><h2>കടൽ</h2></a>
-								<p> കടൽ പുറത്തായിരുന്നോ ഉള്ളിലായിരുന്നോ എന്നവനറിയില്ല. പക്ഷെ, അത് എന്തൊക്കെയോ ആയിരുന്നു. </p>
-							</article>
-
-						<!-- Elements -->
-							<article id="elements">
-								<h2 class="major">Elements</h2>
-
-								<section>
-									<h3 class="major">Text</h3>
-									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-									<hr />
-									<h2>Heading Level 2</h2>
-									<h3>Heading Level 3</h3>
-									<h4>Heading Level 4</h4>
-									<h5>Heading Level 5</h5>
-									<h6>Heading Level 6</h6>
-									<hr />
-									<h4>Blockquote</h4>
-									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-									<h4>Preformatted</h4>
-									<pre><code>i = 0;
-
-while (!deck.isInOrder()) {
-    print 'Iteration ' + i;
-    deck.shuffle();
-    i++;
-}
-
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-								</section>
-
-								<section>
-									<h3 class="major">Lists</h3>
-
-									<h4>Unordered</h4>
-									<ul>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Sagittis adipiscing.</li>
-										<li>Felis enim feugiat.</li>
-									</ul>
-
-									<h4>Alternate</h4>
-									<ul class="alt">
-										<li>Dolor pulvinar etiam.</li>
-										<li>Sagittis adipiscing.</li>
-										<li>Felis enim feugiat.</li>
-									</ul>
-
-									<h4>Ordered</h4>
-									<ol>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Etiam vel felis viverra.</li>
-										<li>Felis enim feugiat.</li>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Etiam vel felis lorem.</li>
-										<li>Felis enim et feugiat.</li>
-									</ol>
-									<h4>Icons</h4>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-									</ul>
-
-									<h4>Actions</h4>
-									<ul class="actions">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-								</section>
-
-								<section>
-									<h3 class="major">Table</h3>
-									<h4>Default</h4>
-									<div class="table-wrapper">
-										<table>
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-
-									<h4>Alternate</h4>
-									<div class="table-wrapper">
-										<table class="alt">
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-								</section>
-
-								<section>
-									<h3 class="major">Buttons</h3>
-									<ul class="actions">
-										<li><a href="#" class="button primary">Primary</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button">Default</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
-										<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-									</ul>
-									<ul class="actions">
-										<li><span class="button primary disabled">Disabled</span></li>
-										<li><span class="button disabled">Disabled</span></li>
-									</ul>
-								</section>
-
-								<section>
-									<h3 class="major">Form</h3>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="demo-name">Name</label>
-												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
-											</div>
-											<div class="field half">
-												<label for="demo-email">Email</label>
-												<input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
-											</div>
-											<div class="field">
-												<label for="demo-category">Category</label>
-												<select name="demo-category" id="demo-category">
-													<option value="">-</option>
-													<option value="1">Manufacturing</option>
-													<option value="1">Shipping</option>
-													<option value="1">Administration</option>
-													<option value="1">Human Resources</option>
-												</select>
-											</div>
-											<div class="field half">
-												<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-												<label for="demo-priority-low">Low</label>
-											</div>
-											<div class="field half">
-												<input type="radio" id="demo-priority-high" name="demo-priority">
-												<label for="demo-priority-high">High</label>
-											</div>
-											<div class="field half">
-												<input type="checkbox" id="demo-copy" name="demo-copy">
-												<label for="demo-copy">Email me a copy</label>
-											</div>
-											<div class="field half">
-												<input type="checkbox" id="demo-human" name="demo-human" checked>
-												<label for="demo-human">Not a robot</label>
-											</div>
-											<div class="field">
-												<label for="demo-message">Message</label>
-												<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" class="primary" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</form>
-								</section>
-
-							</article>
-
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy; Swarag Thaikkandi. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
-
-			</div>
-
-		<!-- BG -->
-			<div id="bg"></div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+    <script>
+        // Simple animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            document.querySelectorAll('.section .card, .section .pub-card, .timeline-item').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
 </html>
