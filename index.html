@@ -96,21 +96,25 @@
         }
         
         .profile-image {
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.9);
+            border: 5px solid rgba(255, 255, 255, 0.9);
             overflow: hidden;
             margin: 0 auto 20px;
             position: relative;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            background: linear-gradient(135deg, var(--zen-water) 0%, var(--zen-moss) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 3rem;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         
         .header-content h1 {
@@ -126,6 +130,7 @@
             margin: 0 auto;
             color: var(--zen-gray);
             font-weight: 500;
+            line-height: 1.6;
         }
         
         /* Zen Grid Layout */
@@ -573,9 +578,8 @@
             }
             
             .profile-image {
-                width: 120px;
-                height: 120px;
-                font-size: 2.5rem;
+                width: 140px;
+                height: 140px;
             }
         }
     </style>
@@ -586,11 +590,12 @@
         <div class="container">
             <div class="profile-container">
                 <div class="profile-image float">
-                    ST
+                    <img src="images/142320710.png" alt="Swarag Thaikkandi">
                 </div>
                 <div class="header-content">
                     <h1>Swarag Thaikkandi</h1>
                     <p>Researcher in Neuroscience & Cognitive Modelling</p>
+                    <p style="margin-top: 20px; max-width: 800px;">Step into this quiet nook of the web, where a once wide-eyed physics student wandered upon the idea that our world is woven by perception—and now drifts deeper into the boundless realms of the mind and sometimes getting carried away by diffusions…</p>
                 </div>
             </div>
         </div>
