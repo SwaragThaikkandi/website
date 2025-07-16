@@ -3,44 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swarag Thaikkandi</title>
+    <title>Swarag Thaikkandi | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --zen-primary: #2c3e50;
-            --zen-secondary: #3498db;
-            --zen-accent: #1abc9c;
-            --zen-light: #f8f9fa;
-            --zen-dark: #34495e;
-            --zen-gray: #95a5a6;
-            --zen-sand: #e7dfd5;
-            --zen-stone: #d4d0c9;
-            --zen-water: #a3d2ca;
-            --zen-moss: #86aba1;
-            --transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            --radius: 12px;
-            --inner-radius: 8px;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            color: var(--zen-dark);
-            line-height: 1.7;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            min-height: 100vh;
-            position: relative;
-            background-attachment: fixed;
+
+        :root {
+            --ironman-red: #C9242C;
+            --ironman-gold: #F0C75E;
+            --arc-reactor-blue: #00C8FF;
+            --windows-dark: #1D1D1D;
+            --windows-gray: #3A3A3A;
+            --windows-light: #F2F2F2;
+            --transition: all 0.5s cubic-bezier(0.2, 0.8, 0.4, 1);
         }
-        
+
+        body {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a25 100%);
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
         body::before {
             content: "";
             position: fixed;
@@ -49,1041 +40,891 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 10% 20%, rgba(26, 188, 156, 0.03) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(52, 152, 219, 0.03) 0%, transparent 20%);
+                radial-gradient(circle at 20% 30%, rgba(0, 200, 255, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(192, 36, 44, 0.05) 0%, transparent 25%);
             z-index: -1;
             pointer-events: none;
         }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            color: var(--zen-primary);
-            margin-bottom: 1.2rem;
-            line-height: 1.3;
-            letter-spacing: -0.02em;
-        }
-        
-        a {
-            color: var(--zen-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        a:hover {
-            color: var(--zen-accent);
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 30px;
-        }
-        
-        /* Zen Header */
-        #zen-header {
-            padding: 40px 0;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            z-index: 10;
-        }
-        
-        .profile-container {
-            position: relative;
-            z-index: 1;
-            margin-bottom: 20px;
-        }
-        
-        .profile-image {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 5px solid rgba(255, 255, 255, 0.9);
-            overflow: hidden;
-            margin: 0 auto 20px;
-            position: relative;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .header-content h1 {
-            color: var(--zen-primary);
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-        
-        .header-content p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            color: var(--zen-gray);
-            font-weight: 500;
-            line-height: 1.6;
-        }
-        
-        /* Zen Grid Layout */
-        .zen-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            padding: 50px 0;
-            position: relative;
-        }
-        
-        .zen-tile {
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            transition: var(--transition);
-            height: 300px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            transform: translateY(0);
-        }
-        
-        .zen-tile:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-        
-        .tile-header {
-            padding: 30px 30px 20px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .tile-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--zen-water);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: white;
-            font-size: 1.8rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .tile-content {
-            padding: 0 30px 30px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .tile-content p {
-            color: var(--zen-gray);
-            margin-bottom: 20px;
-        }
-        
-        .tile-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0.08;
-            z-index: 1;
-        }
-        
-        /* Expanded Tile View */
-        .expanded-tile {
+
+        /* Header with Iron Man styling */
+        .app-bar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: var(--transition);
+            background: rgba(25, 25, 30, 0.95);
             backdrop-filter: blur(10px);
-        }
-        
-        .expanded-tile.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-        
-        .expanded-content {
-            width: 90%;
-            max-width: 1000px;
-            max-height: 90vh;
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
+            padding: 15px 30px;
             display: flex;
-            flex-direction: column;
-            transform: translateY(30px);
-            transition: var(--transition);
-            opacity: 0;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(0, 200, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 200, 255, 0.3);
         }
-        
-        .expanded-tile.active .expanded-content {
-            transform: translateY(0);
-            opacity: 1;
+
+        .app-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
-        
-        .expanded-header {
-            padding: 30px;
-            background: linear-gradient(135deg, var(--zen-primary) 0%, var(--zen-dark) 100%);
-            color: white;
-            position: relative;
+
+        .app-title i {
+            color: var(--arc-reactor-blue);
+            font-size: 28px;
+            animation: pulse 2s infinite;
         }
-        
-        .expanded-header h2 {
-            color: white;
-            font-size: 2.2rem;
-            margin-bottom: 10px;
+
+        .app-title h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            background: linear-gradient(to right, var(--ironman-gold), var(--ironman-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(240, 199, 94, 0.3);
         }
-        
-        .close-btn {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
+
+        .app-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .app-btn {
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--arc-reactor-blue);
+            font-size: 18px;
+            transition: var(--transition);
             cursor: pointer;
-            transition: var(--transition);
-            color: white;
-            font-size: 1.5rem;
-            border: none;
+            border: 1px solid rgba(0, 200, 255, 0.3);
         }
-        
-        .close-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: rotate(90deg);
+
+        .app-btn:hover {
+            background: rgba(0, 200, 255, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 200, 255, 0.4);
         }
-        
-        .expanded-body {
-            padding: 40px;
-            overflow-y: auto;
-            flex-grow: 1;
-        }
-        
-        /* Apple-like Buttons */
-        .zen-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 32px;
-            background: var(--zen-accent);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(26, 188, 156, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .zen-btn:hover {
-            background: #16a085;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(26, 188, 156, 0.4);
-        }
-        
-        .zen-btn:active {
-            transform: translateY(1px);
-            box-shadow: 0 3px 10px rgba(26, 188, 156, 0.3);
-        }
-        
-        .zen-btn i {
-            margin-right: 10px;
-        }
-        
-        .zen-btn.outline {
-            background: transparent;
-            border: 2px solid var(--zen-accent);
-            color: var(--zen-accent);
-            box-shadow: none;
-        }
-        
-        .zen-btn.outline:hover {
-            background: rgba(26, 188, 156, 0.1);
-        }
-        
-        /* Card Styles */
-        .zen-card {
-            background: var(--zen-light);
-            border-radius: var(--inner-radius);
-            padding: 25px;
-            margin-bottom: 25px;
-            transition: var(--transition);
-            border-left: 4px solid var(--zen-accent);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
-        }
-        
-        .zen-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        }
-        
-        .pub-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-        
-        .pub-card .authors {
-            color: var(--zen-gray);
-            margin-bottom: 15px;
-            font-style: italic;
-        }
-        
-        .pub-card .journal {
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--zen-secondary);
-        }
-        
-        .pub-card .links a {
-            display: inline-block;
-            margin-right: 15px;
-            font-weight: 600;
-        }
-        
-        /* Timeline */
-        .timeline {
-            position: relative;
-            max-width: 800px;
+
+        /* Main container */
+        .start-screen {
+            padding: 100px 20px 50px;
+            max-width: 1400px;
             margin: 0 auto;
         }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 20px;
-            width: 4px;
-            background: var(--zen-accent);
-            border-radius: 2px;
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            padding: 0 20px;
         }
-        
-        .timeline-item {
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
             position: relative;
-            margin-bottom: 40px;
-            padding-left: 50px;
+            border: 4px solid var(--ironman-gold);
+            box-shadow: 0 0 30px rgba(240, 199, 94, 0.5);
         }
-        
-        .timeline-icon {
+
+        .profile-image::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--ironman-red), var(--ironman-gold), var(--arc-reactor-blue));
+            z-index: -1;
+            animation: rotate 10s linear infinite;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-content {
+            flex: 1;
+        }
+
+        .profile-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--ironman-gold);
+            text-shadow: 0 0 10px rgba(240, 199, 94, 0.5);
+        }
+
+        .profile-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ccc;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        .academic-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .academic-tag {
+            background: rgba(192, 36, 44, 0.15);
+            color: var(--ironman-red);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(192, 36, 44, 0.3);
+            transition: var(--transition);
+        }
+
+        .academic-tag:hover {
+            background: rgba(192, 36, 44, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Windows 8 Tiles with flipping effect */
+        .tiles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .tile-container {
+            perspective: 1000px;
+            height: 250px;
+        }
+
+        .win8-tile {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+            cursor: pointer;
+            border-radius: 0;
+        }
+
+        .tile-container:hover .win8-tile {
+            transform: rotateY(180deg);
+        }
+
+        .tile-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 25px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .tile-front {
+            background: rgba(40, 40, 45, 0.8);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .tile-back {
+            background: rgba(30, 30, 35, 0.95);
+            transform: rotateY(180deg);
+            justify-content: space-between;
+        }
+
+        .tile-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--ironman-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 0 20px rgba(192, 36, 44, 0.5);
+        }
+
+        .tile-front h3 {
+            font-size: 24px;
+            font-weight: 400;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tile-back h4 {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--ironman-gold);
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .tile-back p {
+            color: #aaa;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .tile-back .tile-btn {
+            align-self: flex-start;
+            padding: 10px 25px;
+            background: transparent;
+            color: var(--arc-reactor-blue);
+            border: 2px solid var(--arc-reactor-blue);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tile-back .tile-btn:hover {
+            background: rgba(0, 200, 255, 0.15);
+            box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+        }
+
+        /* Color Variations */
+        .tile-blue .tile-icon {
+            background: var(--arc-reactor-blue);
+            box-shadow: 0 0 20px rgba(0, 200, 255, 0.5);
+        }
+
+        .tile-gold .tile-icon {
+            background: var(--ironman-gold);
+            box-shadow: 0 0 20px rgba(240, 199, 94, 0.5);
+        }
+
+        .tile-red .tile-icon {
+            background: var(--ironman-red);
+            box-shadow: 0 0 20px rgba(192, 36, 44, 0.5);
+        }
+
+        /* Publication Sections */
+        .publications {
+            margin-top: 80px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--ironman-red);
+            display: inline-block;
+            color: var(--ironman-gold);
+            text-shadow: 0 0 10px rgba(240, 199, 94, 0.3);
+        }
+
+        .pub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 30px;
+        }
+
+        .pub-item {
+            background: rgba(40, 40, 45, 0.8);
+            padding: 25px;
+            border-left: 4px solid var(--arc-reactor-blue);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pub-item::before {
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
-            width: 40px;
-            height: 40px;
-            background: var(--zen-accent);
-            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(0, 200, 255, 0.05), transparent);
+            z-index: -1;
+        }
+
+        .pub-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border-left: 4px solid var(--ironman-gold);
+        }
+
+        .pub-item h3 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .pub-authors {
+            color: var(--arc-reactor-blue);
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .pub-journal {
+            color: var(--ironman-gold);
+            font-weight: 600;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            z-index: 1;
+            gap: 8px;
         }
-        
-        .timeline-content {
-            background: white;
-            padding: 25px;
-            border-radius: var(--inner-radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
+        .pub-journal i {
+            color: var(--ironman-red);
         }
-        
-        /* Form Styles */
-        .form-group {
-            margin-bottom: 25px;
+
+        .pub-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
         }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
+
+        .pub-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--arc-reactor-blue);
             font-weight: 600;
-            color: var(--zen-dark);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 16px 20px;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            font-family: inherit;
-            font-size: 1rem;
+            text-decoration: none;
             transition: var(--transition);
-            background: rgba(255, 255, 255, 0.8);
+            padding: 8px 15px;
+            background: rgba(0, 200, 255, 0.1);
+            border-radius: 4px;
         }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--zen-accent);
-            box-shadow: 0 0 0 4px rgba(26, 188, 156, 0.15);
+
+        .pub-link:hover {
+            background: rgba(0, 200, 255, 0.2);
+            color: #fff;
         }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
+
+        /* Footer */
+        footer {
+            background: rgba(15, 15, 20, 0.95);
+            padding: 60px 20px 40px;
+            margin-top: 80px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 200, 255, 0.2);
         }
-        
-        /* Social Icons */
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-card {
+            background: rgba(40, 40, 45, 0.8);
+            padding: 25px;
+            border-radius: 8px;
+            min-width: 250px;
+            border: 1px solid rgba(0, 200, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--ironman-red);
+            box-shadow: 0 10px 30px rgba(192, 36, 44, 0.3);
+        }
+
+        .contact-card i {
+            font-size: 36px;
+            color: var(--arc-reactor-blue);
+            margin-bottom: 15px;
+        }
+
+        .contact-card h4 {
+            font-size: 20px;
+            color: var(--ironman-gold);
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .contact-card p, .contact-card a {
+            color: #ccc;
+            font-size: 16px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: var(--arc-reactor-blue);
+        }
+
         .social-icons {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 30px 0;
+            gap: 25px;
+            margin: 40px 0;
         }
-        
+
         .social-icon {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            background: var(--zen-light);
+            background: rgba(40, 40, 45, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--zen-dark);
-            font-size: 1.2rem;
+            color: var(--arc-reactor-blue);
+            font-size: 24px;
             transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 200, 255, 0.3);
         }
-        
+
         .social-icon:hover {
-            background: var(--zen-accent);
-            color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 200, 255, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 200, 255, 0.3);
         }
-        
-        /* Footer */
-        footer {
-            background: var(--zen-primary);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 40px 0;
-            text-align: center;
-            font-size: 0.9rem;
+
+        .copyright {
+            color: #888;
+            font-size: 14px;
+            margin-top: 30px;
         }
-        
-        /* Blog Tile */
-        .blog-tile {
-            background: linear-gradient(135deg, var(--zen-primary) 0%, var(--zen-dark) 100%);
-            color: white;
-        }
-        
-        .blog-tile .tile-header h2,
-        .blog-tile .tile-content p {
-            color: white;
-        }
-        
-        .blog-tile .tile-icon {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
+
         /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; text-shadow: 0 0 15px rgba(0, 200, 255, 0.8); }
+            100% { opacity: 0.8; }
         }
-        
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-15px); }
             100% { transform: translateY(0px); }
         }
-        
-        .animate {
-            animation: fadeIn 0.8s ease-out forwards;
+
+        .tile-animate {
+            animation: float 6s ease-in-out infinite;
         }
-        
-        .float {
-            animation: float 4s ease-in-out infinite;
-        }
-        
+
+        .tile-delay-1 { animation-delay: 0.2s; }
+        .tile-delay-2 { animation-delay: 0.4s; }
+        .tile-delay-3 { animation-delay: 0.6s; }
+        .tile-delay-4 { animation-delay: 0.8s; }
+
         /* Responsive */
-        @media (max-width: 992px) {
-            .zen-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        @media (max-width: 1000px) {
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
             }
             
-            .expanded-body {
-                padding: 30px;
+            .academic-tags {
+                justify-content: center;
+            }
+            
+            .pub-grid {
+                grid-template-columns: 1fr;
             }
         }
-        
+
         @media (max-width: 768px) {
-            .header-content h1 {
-                font-size: 2.2rem;
-            }
-            
-            .zen-tile {
-                height: 280px;
-            }
-            
-            .tile-header {
-                padding: 25px 25px 15px;
-            }
-            
-            .expanded-body {
-                padding: 25px 20px;
-            }
-            
-            .expanded-header {
-                padding: 25px;
-            }
-            
-            .expanded-header h2 {
-                font-size: 1.8rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .zen-grid {
+            .tiles-container {
                 grid-template-columns: 1fr;
             }
             
-            .header-content h1 {
-                font-size: 1.8rem;
+            .app-title h1 {
+                font-size: 20px;
             }
             
-            .profile-image {
-                width: 140px;
-                height: 140px;
+            .profile-content h2 {
+                font-size: 28px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Zen Header -->
-    <header id="zen-header">
-        <div class="container">
-            <div class="profile-container">
-                <div class="profile-image float">
-                    <img src="images/142320710.png" alt="Swarag Thaikkandi">
-                </div>
-                <div class="header-content">
-                    <h1>Swarag Thaikkandi</h1>
-                    <p>Researcher in Neuroscience & Cognitive Modelling</p>
-                    <p style="margin-top: 20px; max-width: 800px;">Step into this quiet nook of the web, where a once wide-eyed physics student wandered upon the idea that our world is woven by perception—and now drifts deeper into the boundless realms of the mind and sometimes getting carried away by diffusions…</p>
+    <!-- App Bar -->
+    <div class="app-bar">
+        <div class="app-title">
+            <i class="fas fa-hat-cowboy"></i>
+            <h1>SWARAG THAIKKANDI | RESEARCHER</h1>
+        </div>
+        <div class="app-actions">
+            <div class="app-btn">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="app-btn">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="app-btn">
+                <i class="fas fa-cog"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Screen -->
+    <div class="start-screen">
+        <div class="profile-section">
+            <div class="profile-image tile-animate">
+                <img src="images/142320710.png" alt="Swarag Thaikkandi">
+            </div>
+            <div class="profile-content">
+                <h2>Swarag Thaikkandi</h2>
+                <p>Exploring Neuroscience & Cognitive Modelling</p>
+                <p>Step into this quiet nook of the web, where a once wide-eyed physics student wandered upon the idea that our world is woven by perception—and now drifts deeper into the boundless realms of the mind and sometimes getting carried away by diffusions…</p>
+                
+                <div class="academic-tags">
+                    <div class="academic-tag">Cognitive Neuroscience</div>
+                    <div class="academic-tag">Attractor Dynamics</div>
+                    <div class="academic-tag">Reinforcement Learning</div>
+                    <div class="academic-tag">Decision Making</div>
+                    <div class="academic-tag">Bayesian Modeling</div>
                 </div>
             </div>
         </div>
-    </header>
 
-    <!-- Zen Grid -->
-    <div class="container">
-        <div class="zen-grid">
+        <!-- Windows 8 Tiles with flipping effect -->
+        <div class="tiles-container">
             <!-- Intro Tile -->
-            <div class="zen-tile animate" data-section="intro">
-                <div class="tile-bg" style="background-image: url('https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80')"></div>
-                <div class="tile-header">
-                    <div class="tile-icon">
-                        <i class="fas fa-seedling"></i>
+            <div class="tile-container">
+                <div class="win8-tile">
+                    <div class="tile-face tile-front tile-red">
+                        <div class="tile-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Intro</h3>
                     </div>
-                    <h2>Intro</h2>
-                </div>
-                <div class="tile-content">
-                    <p>My journey from physics to neuroscience and cognitive modeling</p>
-                    <div style="margin-top: auto;">
-                        <button class="zen-btn outline">
+                    <div class="tile-face tile-back">
+                        <h4>My Journey</h4>
+                        <p>From physics to neuroscience and cognitive modeling. Explore my academic evolution and research philosophy.</p>
+                        <a href="#" class="tile-btn">
                             <i class="fas fa-book-open"></i> Read More
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Work Tile -->
-            <div class="zen-tile animate delay-1" data-section="work">
-                <div class="tile-bg" style="background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
-                <div class="tile-header">
-                    <div class="tile-icon">
-                        <i class="fas fa-flask"></i>
+            <!-- Papers Tile -->
+            <div class="tile-container">
+                <div class="win8-tile">
+                    <div class="tile-face tile-front tile-blue">
+                        <div class="tile-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Papers</h3>
                     </div>
-                    <h2>Research</h2>
+                    <div class="tile-face tile-back">
+                        <h4>Published Research</h4>
+                        <p>Peer-reviewed journal articles and publications in neuroscience and cognitive science.</p>
+                        <a href="#" class="tile-btn">
+                            <i class="fas fa-scroll"></i> View Publications
+                        </a>
+                    </div>
                 </div>
-                <div class="tile-content">
-                    <p>My contributions to neuroscience and cognitive research</p>
-                    <div style="margin-top: auto;">
-                        <button class="zen-btn outline">
-                            <i class="fas fa-scroll"></i> View Work
-                        </button>
+            </div>
+
+            <!-- Pre-prints Tile -->
+            <div class="tile-container">
+                <div class="win8-tile">
+                    <div class="tile-face tile-front tile-gold">
+                        <div class="tile-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <h3>Pre-prints</h3>
+                    </div>
+                    <div class="tile-face tile-back">
+                        <h4>Work in Progress</h4>
+                        <p>Pre-print publications and ongoing research projects awaiting peer review.</p>
+                        <a href="#" class="tile-btn">
+                            <i class="fas fa-cloud-download-alt"></i> Access Pre-prints
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conferences Tile -->
+            <div class="tile-container">
+                <div class="win8-tile">
+                    <div class="tile-face tile-front tile-red">
+                        <div class="tile-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3>Conferences</h3>
+                    </div>
+                    <div class="tile-face tile-back">
+                        <h4>Presentations & Talks</h4>
+                        <p>Conference proceedings, presentations, and invited talks in cognitive science.</p>
+                        <a href="#" class="tile-btn">
+                            <i class="fas fa-microphone"></i> View Presentations
+                        </a>
                     </div>
                 </div>
             </div>
 
             <!-- About Tile -->
-            <div class="zen-tile animate delay-2" data-section="about">
-                <div class="tile-bg" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
-                <div class="tile-header">
-                    <div class="tile-icon">
-                        <i class="fas fa-user-graduate"></i>
+            <div class="tile-container">
+                <div class="win8-tile">
+                    <div class="tile-face tile-front tile-blue">
+                        <div class="tile-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3>About</h3>
                     </div>
-                    <h2>About</h2>
-                </div>
-                <div class="tile-content">
-                    <p>My academic background and journey</p>
-                    <div style="margin-top: auto;">
-                        <button class="zen-btn outline">
-                            <i class="fas fa-history"></i> Timeline
-                        </button>
+                    <div class="tile-face tile-back">
+                        <h4>Academic Background</h4>
+                        <p>My education, research interests, technical skills, and academic journey timeline.</p>
+                        <a href="#" class="tile-btn">
+                            <i class="fas fa-history"></i> Explore Timeline
+                        </a>
                     </div>
                 </div>
             </div>
 
             <!-- Contact Tile -->
-            <div class="zen-tile animate delay-3" data-section="contact">
-                <div class="tile-bg" style="background-image: url('https://images.unsplash.com/photo-1528747045269-390fe33c19f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
-                <div class="tile-header">
-                    <div class="tile-icon">
-                        <i class="fas fa-envelope"></i>
+            <div class="tile-container">
+                <div class="win8-tile">
+                    <div class="tile-face tile-front tile-gold">
+                        <div class="tile-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Contact</h3>
                     </div>
-                    <h2>Contact</h2>
-                </div>
-                <div class="tile-content">
-                    <p>Get in touch for collaborations or inquiries</p>
-                    <div style="margin-top: auto;">
-                        <button class="zen-btn outline">
+                    <div class="tile-face tile-back">
+                        <h4>Get In Touch</h4>
+                        <p>Connect with me for collaborations, speaking engagements, or research inquiries.</p>
+                        <a href="#" class="tile-btn">
                             <i class="fas fa-paper-plane"></i> Reach Out
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Codes Tile -->
-            <div class="zen-tile animate delay-4" data-section="codes">
-                <div class="tile-bg" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
-                <div class="tile-header">
-                    <div class="tile-icon">
-                        <i class="fas fa-code"></i>
+            <!-- Code Tile -->
+            <div class="tile-container">
+                <div class="win8-tile">
+                    <div class="tile-face tile-front tile-red">
+                        <div class="tile-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Code</h3>
                     </div>
-                    <h2>Code</h2>
-                </div>
-                <div class="tile-content">
-                    <p>Open-source tools and libraries I've developed</p>
-                    <div style="margin-top: auto;">
-                        <button class="zen-btn outline">
-                            <i class="fas fa-laptop-code"></i> Explore
-                        </button>
+                    <div class="tile-face tile-back">
+                        <h4>Projects & Tools</h4>
+                        <p>Open-source repositories, libraries, and tools developed for neuroscience research.</p>
+                        <a href="#" class="tile-btn">
+                            <i class="fab fa-github"></i> Explore Code
+                        </a>
                     </div>
                 </div>
             </div>
 
             <!-- Blog Tile -->
-            <a href="https://swaragthaikkandi.blogspot.com" target="_blank" class="zen-tile blog-tile animate delay-5">
-                <div class="tile-bg" style="background-image: url('https://images.unsplash.com/photo-1471107340929-a87cd0f5b5f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80')"></div>
-                <div class="tile-header">
-                    <div class="tile-icon">
-                        <i class="fas fa-pen-nib"></i>
+            <div class="tile-container">
+                <a href="https://swaragthaikkandi.blogspot.com" target="_blank" class="win8-tile">
+                    <div class="tile-face tile-front tile-blue">
+                        <div class="tile-icon">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                        <h3>Blog</h3>
                     </div>
-                    <h2>Blog</h2>
-                </div>
-                <div class="tile-content">
-                    <p>Personal reflections and writings</p>
-                    <div style="margin-top: auto;">
-                        <button class="zen-btn outline">
+                    <div class="tile-face tile-back">
+                        <h4>Personal Reflections</h4>
+                        <p>Writings on neuroscience, cognitive science, and personal research experiences.</p>
+                        <a href="https://swaragthaikkandi.blogspot.com" class="tile-btn">
                             <i class="fas fa-feather-alt"></i> Read Blog
-                        </button>
+                        </a>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Publications Sections -->
+        <div class="publications">
+            <h2 class="section-title">Research Publications</h2>
+            
+            <!-- Papers Section -->
+            <h3 class="section-title" style="font-size: 26px; margin-top: 40px;">Journal Papers</h3>
+            <div class="pub-grid">
+                <div class="pub-item">
+                    <h3>Interpersonal heart rate synchrony predicts effective information processing in a naturalistic group decision-making task</h3>
+                    <p class="pub-authors">Sharika, K. M., Thaikkandi, S., Nivedita, & Platt, M. L.</p>
+                    <p class="pub-journal"><i class="fas fa-book"></i> Proceedings of the National Academy of Sciences 121(21), e2313801121</p>
+                    <div class="pub-links">
+                        <a href="https://doi.org/10.1073/pnas.2313801121" class="pub-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> View Publication
+                        </a>
+                        <a href="#" class="pub-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </a>
                     </div>
                 </div>
-            </a>
-        </div>
-    </div>
-
-    <!-- Expanded Tile Views -->
-    <div class="expanded-tile" id="expanded-intro">
-        <div class="expanded-content">
-            <div class="expanded-header">
-                <h2>Intro</h2>
-                <p>My journey from physics to neuroscience and cognitive modeling</p>
-                <button class="close-btn">
-                    <i class="fas fa-times"></i>
-                </button>
             </div>
-            <div class="expanded-body">
-                <div class="zen-card">
-                    <p>Raised in the heart of a village in Kerala, my academic journey emerged from contemplations on the meaning of self, life, and the enigma of reality. What particularly fascinated me was the intricate interplay between financial decisions, especially in a middle-class setting, and the pervasive spread of superstitious beliefs.</p>
-                </div>
-                
-                <div class="zen-card">
-                    <p>The juxtaposition of significant life choices made with little deliberation alongside the propagation of unfounded beliefs challenged my understanding of objective truth. It compelled me to reevaluate reality through the lens of subjective beliefs, resembling the adaptive nature of a Bayesian model. This dual fascination forms the core of my research interests in neuroscience, decision-making, and cognitive modelling.</p>
-                </div>
-                
-                <div class="zen-card">
-                    <p>I first fell for physics during my early days at IISER Pune. In my second year, I found myself wondering if there might be something even deeper than the physical reality we probe with equations and experiments—what truly shapes the world we perceive? A conversation with a humanities professor led me to Carlos Castaneda’s Teachings of Don Juan.</p>
-                </div>
-                
-                <div class="zen-card">
-                    <p>His vivid accounts of encounters with "allies"—plant-based guides that usher one into realms beyond the ordinary—challenged everything I thought I knew about perception and inspired me to explore how we construct our reality.</p>
-                </div>
-                
-                <div class="zen-card">
-                    <p>I began to see humans as extraordinary pattern–seeking engines, constantly weaving the threads of perception to fill in gaps and make sense of an ever-shifting world. That insight drew me into the study of attractor dynamics in working memory—delving into how Hopf networks can model the brain’s ability to stabilize fleeting thoughts and return to core ideas like a cognitive lodestar.</p>
-                </div>
-                
-                <div class="zen-card">
-                    <p>From there, my curiosity branched out: I explored how decision-making unfolds within those dynamic landscapes, how our emotions color each choice, and how the social tapestry we inhabit shapes the patterns we recognize and the realities we construct.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="expanded-tile" id="expanded-work">
-        <div class="expanded-content">
-            <div class="expanded-header">
-                <h2>Research & Publications</h2>
-                <p>My contributions to neuroscience and cognitive research</p>
-                <button class="close-btn">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="expanded-body">
-                <div class="zen-card pub-card">
-                    <h3>Interpersonal heart rate synchrony predicts effective information processing in a naturalistic group decision-making task</h3>
-                    <p class="authors">Sharika, K. M., Thaikkandi, S., Nivedita, & Platt, M. L.</p>
-                    <p class="journal">Proceedings of the National Academy of Sciences 121(21), e2313801121</p>
-                    <div class="links">
-                        <a href="https://doi.org/10.1073/pnas.2313801121" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> View Publication
+            
+            <!-- Pre-prints Section -->
+            <h3 class="section-title" style="font-size: 26px; margin-top: 60px;">Pre-prints</h3>
+            <div class="pub-grid">
+                <div class="pub-item">
+                    <h3>Analyzing time series of unequal durations using Multidimensional Recurrence Quantification Analysis (MdRQA): validation and implementation using Python</h3>
+                    <p class="pub-authors">Thaikkandi, S., Sharika, K. M.</p>
+                    <p class="pub-journal"><i class="fas fa-archive"></i> arXiv preprint arXiv:2307.11675</p>
+                    <div class="pub-links">
+                        <a href="https://arxiv.org/abs/2307.11675" class="pub-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> View on arXiv
+                        </a>
+                        <a href="#" class="pub-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i> PDF
                         </a>
                     </div>
                 </div>
                 
-                <h3 style="margin: 30px 0 15px; padding-bottom: 10px; border-bottom: 2px solid var(--zen-accent);">Conference Presentations</h3>
-                
-                <div class="zen-card pub-card">
+                <div class="pub-item">
+                    <h3>Mine is Merrier: A Process Description of the Robust In-Group Bias Across Contexts Using Perceptual-Matching Task</h3>
+                    <p class="pub-authors">Baba, A., Thaikkandi, S., Verma, A.</p>
+                    <p class="pub-journal"><i class="fas fa-archive"></i> PsyArxive preprint</p>
+                    <div class="pub-links">
+                        <a href="https://doi.org/10.31234/osf.io/s4vg8" class="pub-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> View Preprint
+                        </a>
+                        <a href="#" class="pub-link" target="_blank">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Conferences Section -->
+            <h3 class="section-title" style="font-size: 26px; margin-top: 60px;">Conference Presentations</h3>
+            <div class="pub-grid">
+                <div class="pub-item">
                     <h3>Interpersonal heart rate synchrony predicts effective group performance in a naturalistic collective decision-making task</h3>
-                    <p class="authors">Sharika, K. M., Thaikkandi, S., Nivedita, & Platt, M. L.</p>
-                    <p class="journal">Social and Affective Neuroscience Conference 2024. Toronto.</p>
-                    <div class="links">
-                        <a href="https://socialaffectiveneuro.org/wp-content/uploads/2024/04/SANS-Conference-2024_Abstract-Book_April-8.pdf" target="_blank">
+                    <p class="pub-authors">Sharika, K. M., Thaikkandi, S., Nivedita, & Platt, M. L.</p>
+                    <p class="pub-journal"><i class="fas fa-users"></i> Social and Affective Neuroscience Conference 2024. Toronto.</p>
+                    <div class="pub-links">
+                        <a href="https://socialaffectiveneuro.org/wp-content/uploads/2024/04/SANS-Conference-2024_Abstract-Book_April-8.pdf" class="pub-link" target="_blank">
                             <i class="fas fa-external-link-alt"></i> View Abstract Book
                         </a>
                     </div>
                 </div>
                 
-                <div class="zen-card pub-card">
+                <div class="pub-item">
                     <h3>Effect of valence & uncertainty on reinforcement learning</h3>
-                    <p class="authors">Thaikkandi, S., & Sharika, K. M.</p>
-                    <p class="journal">Annual Conference of Cognitive Sciences (ACCS) 10. India.</p>
-                    <div class="links">
-                        <a href="https://www.cgs.iitk.ac.in/user/accs10/files/ACCSX_Booklet.pdf" target="_blank">
+                    <p class="pub-authors">Thaikkandi, S., & Sharika, K. M.</p>
+                    <p class="pub-journal"><i class="fas fa-users"></i> Annual Conference of Cognitive Sciences (ACCS) 10. India.</p>
+                    <div class="pub-links">
+                        <a href="https://www.cgs.iitk.ac.in/user/accs10/files/ACCSX_Booklet.pdf" class="pub-link" target="_blank">
                             <i class="fas fa-external-link-alt"></i> View Booklet
                         </a>
                     </div>
                 </div>
-                
-                <h3 style="margin: 30px 0 15px; padding-bottom: 10px; border-bottom: 2px solid var(--zen-accent);">Pre-Prints</h3>
-                
-                <div class="zen-card pub-card">
-                    <h3>Analyzing time series of unequal durations using Multidimensional Recurrence Quantification Analysis (MdRQA): validation and implementation using Python</h3>
-                    <p class="authors">Thaikkandi, S., Sharika, K. M.</p>
-                    <p class="journal">arXiv preprint arXiv:2307.11675</p>
-                    <div class="links">
-                        <a href="https://arxiv.org/abs/2307.11675" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> View on arXiv
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="zen-card pub-card">
-                    <h3>Mine is Merrier: A Process Description of the Robust In-Group Bias Across Contexts Using Perceptual-Matching Task</h3>
-                    <p class="authors">Baba, A., Thaikkandi, S., Verma, A.</p>
-                    <p class="journal">PsyArxive preprint</p>
-                    <div class="links">
-                        <a href="https://doi.org/10.31234/osf.io/s4vg8" target="_blank">
-                            <i class="fas fa-external-link-alt"></i> View Preprint
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="expanded-tile" id="expanded-about">
-        <div class="expanded-content">
-            <div class="expanded-header">
-                <h2>About Me</h2>
-                <p>My academic background and journey</p>
-                <button class="close-btn">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="expanded-body">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Indian Institute of Science Education and Research (IISER), Pune</h3>
-                            <p><strong>Location:</strong> Pune, Maharashtra, India</p>
-                            <p><em>
-                                An autonomous institute under the Ministry of Education, Government of India.<br>
-                                Declared as an Institute of National Importance by an Act of Parliament.<br>
-                                Premier institute dedicated to research and teaching in the basic sciences.
-                            </em></p>
-                            <p><strong>Program:</strong> BS-MS Dual Degree (Division of Biology)</p>
-                            <p><strong>Duration:</strong> 2018–2023</p>
-                            <p><strong>CGPA:</strong> 8.2 / 10</p>
-                            <p><strong>Master's Thesis:</strong> "Effect of Uncertainty and Valence in Reinforcement Learning" (GPA: 9.1 / 10)</p>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Research Interests</h3>
-                            <p>My research focuses on the intersection of neuroscience, cognitive modeling, and decision-making processes.</p>
-                            <ul style="margin-top: 15px; padding-left: 20px;">
-                                <li>Attractor dynamics in working memory</li>
-                                <li>Reinforcement learning under uncertainty</li>
-                                <li>Interpersonal physiological synchrony</li>
-                                <li>Bayesian models of cognition</li>
-                                <li>Social influences on decision-making</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <div class="timeline-content">
-                            <h3>Technical Skills</h3>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
-                                <div class="zen-card" style="margin: 0;">
-                                    <h4>Programming</h4>
-                                    <p>Python, MATLAB, R, JavaScript</p>
-                                </div>
-                                <div class="zen-card" style="margin: 0;">
-                                    <h4>Data Analysis</h4>
-                                    <p>Pandas, NumPy, SciPy, Statsmodels</p>
-                                </div>
-                                <div class="zen-card" style="margin: 0;">
-                                    <h4>Modeling</h4>
-                                    <p>PyTorch, TensorFlow, Stan</p>
-                                </div>
-                                <div class="zen-card" style="margin: 0;">
-                                    <h4>Visualization</h4>
-                                    <p>Matplotlib, Seaborn, Plotly</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="expanded-tile" id="expanded-contact">
-        <div class="expanded-content">
-            <div class="expanded-header">
-                <h2>Contact Me</h2>
-                <p>Get in touch for collaborations or inquiries</p>
-                <button class="close-btn">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="expanded-body">
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea name="message" id="message" class="form-control" rows="6" required></textarea>
-                        </div>
-                        <button type="submit" class="zen-btn">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
-                    
-                    <div class="social-icons">
-                        <a href="https://x.com/swarag_t" class="social-icon" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://in.linkedin.com/in/swarag-t-2b998a1b5" class="social-icon" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/SwaragThaikkandi" class="social-icon" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://orcid.org/0009-0007-8101-2378" class="social-icon" target="_blank">
-                            <i class="fab fa-orcid"></i>
-                        </a>
-                        <a href="https://www.researchgate.net/profile/Swarag-Thaikkandi" class="social-icon" target="_blank">
-                            <i class="fab fa-researchgate"></i>
-                        </a>
-                        <a href="https://www.scopus.com/authid/detail.uri?authorId=58537975000" class="social-icon" target="_blank">
-                            <i class="fas fa-book"></i>
-                        </a>
-                        <a href="https://scholar.google.com/citations?user=fg81xJQAAAAJ&hl=en" class="social-icon" target="_blank">
-                            <i class="fas fa-graduation-cap"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="expanded-tile" id="expanded-codes">
-        <div class="expanded-content">
-            <div class="expanded-header">
-                <h2>Codes & Packages</h2>
-                <p>Open-source tools and libraries I've developed</p>
-                <button class="close-btn">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="expanded-body">
-                <div class="zen-card">
-                    <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
-                        <div style="flex: 1; min-width: 300px;">
-                            <h3>SMdRQA</h3>
-                            <p>SMdRQA is a Python package designed for conducting Sliding Window Multidimensional Recurrent Quantification Analysis (SMdRQA). This specialized analysis technique allows researchers to explore temporal patterns and dependencies in multidimensional data sequences using a sliding window approach.</p>
-                            <div style="margin-top: 20px; display: flex; gap: 15px;">
-                                <a href="https://swaragthaikkandi.github.io/SMdRQA/" class="zen-btn" target="_blank">
-                                    <i class="fas fa-book"></i> Documentation
-                                </a>
-                                <a href="https://pypi.org/project/SMdRQA/" class="zen-btn outline" target="_blank">
-                                    <i class="fab fa-python"></i> PyPI
-                                </a>
-                            </div>
-                        </div>
-                        <div style="flex: 1; min-width: 300px; background: var(--zen-light); padding: 25px; border-radius: var(--inner-radius);">
-                            <pre style="background: white; padding: 20px; border-radius: 8px; overflow: auto;">
-# Example usage of SMdRQA
-from SMdRQA import RQA
-
-# Create an RQA object
-rqa = RQA(time_series, embedding_dim=3, time_delay=1)
-
-# Compute RQA metrics
-rqa.compute_rqa(radius=0.5)
-
-# Get recurrence rate
-recurrence_rate = rqa.recurrence_rate
-
-# Plot recurrence matrix
-rqa.plot_recurrence_matrix()</pre>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="zen-card">
-                    <h3>Features</h3>
-                    <ul style="margin-top: 15px; padding-left: 20px; columns: 2;">
-                        <li>Sliding window analysis of multidimensional time series</li>
-                        <li>Multiple recurrence quantification measures</li>
-                        <li>Visualization tools for recurrence plots</li>
-                        <li>Efficient computation using NumPy</li>
-                        <li>Comprehensive documentation with examples</li>
-                        <li>Compatible with SciPy ecosystem</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer with Contact -->
     <footer>
-        <div class="container">
-            <p>&copy; 2023 Swarag Thaikkandi. All rights reserved.</p>
-            <p style="margin-top: 10px; opacity: 0.7;">Designed with Zen philosophy in mind</p>
+        <div class="contact-info">
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h4>Email</h4>
+                <a href="mailto:contact@example.com">contact@example.com</a>
+            </div>
+            
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h4>Location</h4>
+                <p>Pune, Maharashtra, India</p>
+            </div>
+            
+            <div class="contact-card">
+                <i class="fas fa-download"></i>
+                <h4>Downloads</h4>
+                <a href="#">Curriculum Vitae</a>
+            </div>
         </div>
+        
+        <div class="social-icons">
+            <a href="https://x.com/swarag_t" class="social-icon" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://in.linkedin.com/in/swarag-t-2b998a1b5" class="social-icon" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/SwaragThaikkandi" class="social-icon" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://orcid.org/0009-0007-8101-2378" class="social-icon" target="_blank">
+                <i class="fab fa-orcid"></i>
+            </a>
+            <a href="https://www.researchgate.net/profile/Swarag-Thaikkandi" class="social-icon" target="_blank">
+                <i class="fab fa-researchgate"></i>
+            </a>
+            <a href="https://scholar.google.com/citations?user=fg81xJQAAAAJ&hl=en" class="social-icon" target="_blank">
+                <i class="fas fa-graduation-cap"></i>
+            </a>
+        </div>
+        
+        <p class="copyright">© 2023 Swarag Thaikkandi. All rights reserved.<br>
+        Designed with Windows 8 aesthetics and Iron Man inspiration</p>
     </footer>
 
     <script>
-        // Tile expansion functionality
+        // Initialize tile animations
         document.addEventListener('DOMContentLoaded', function() {
-            const tiles = document.querySelectorAll('.zen-tile:not(.blog-tile)');
-            const expandedTiles = document.querySelectorAll('.expanded-tile');
-            const closeBtns = document.querySelectorAll('.close-btn');
-            
-            tiles.forEach(tile => {
-                tile.addEventListener('click', function() {
-                    const section = this.getAttribute('data-section');
-                    const expandedTile = document.getElementById(`expanded-${section}`);
-                    
-                    if (expandedTile) {
-                        expandedTile.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    }
-                });
+            // Add animation delays to tiles
+            const tiles = document.querySelectorAll('.tile-container');
+            tiles.forEach((tile, index) => {
+                tile.classList.add(`tile-delay-${index % 4}`);
             });
             
-            closeBtns.forEach(btn => {
+            // App bar buttons functionality
+            const appBtns = document.querySelectorAll('.app-btn');
+            appBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    const expandedTile = this.closest('.expanded-tile');
-                    if (expandedTile) {
-                        expandedTile.classList.remove('active');
-                        document.body.style.overflow = '';
+                    this.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 300);
+                    
+                    // Simulate button actions
+                    if (this.querySelector('.fa-search')) {
+                        alert('Search functionality would open here');
+                    } else if (this.querySelector('.fa-user')) {
+                        alert('Profile options would appear here');
+                    } else if (this.querySelector('.fa-cog')) {
+                        alert('Settings panel would open here');
                     }
                 });
-            });
-            
-            // Close expanded tile when clicking outside content
-            expandedTiles.forEach(tile => {
-                tile.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.classList.remove('active');
-                        document.body.style.overflow = '';
-                    }
-                });
-            });
-            
-            // Animation on scroll
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            document.querySelectorAll('.zen-tile').forEach(el => {
-                observer.observe(el);
             });
         });
     </script>
