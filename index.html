@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swarag Thaikkandi | Portfolio</title>
+    <title>Swarag Thaikkandi | Researcher</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -20,7 +20,7 @@
             --windows-dark: #1D1D1D;
             --windows-gray: #3A3A3A;
             --windows-light: #F2F2F2;
-            --transition: all 0.5s cubic-bezier(0.2, 0.8, 0.4, 1);
+            --transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         body {
@@ -326,27 +326,76 @@
             box-shadow: 0 0 20px rgba(192, 36, 44, 0.5);
         }
 
-        /* Publication Sections */
-        .publications {
-            margin-top: 80px;
-            padding: 0 20px;
+        /* Section Panels */
+        .section-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(20, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            padding: 20px;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+            display: flex;
+            flex-direction: column;
         }
 
-        .section-title {
+        .section-panel.active {
+            transform: translateY(0);
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid var(--ironman-red);
+            margin-bottom: 30px;
+        }
+
+        .panel-header h2 {
             font-family: 'Orbitron', sans-serif;
             font-size: 32px;
-            font-weight: 400;
-            margin-bottom: 40px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--ironman-red);
-            display: inline-block;
             color: var(--ironman-gold);
             text-shadow: 0 0 10px rgba(240, 199, 94, 0.3);
         }
 
+        .close-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(192, 36, 44, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid var(--ironman-red);
+        }
+
+        .close-btn:hover {
+            background: var(--ironman-red);
+            transform: rotate(90deg);
+        }
+
+        .panel-content {
+            padding: 20px;
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Publication Sections */
         .pub-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
             gap: 30px;
         }
 
@@ -425,31 +474,145 @@
             background: rgba(0, 200, 255, 0.2);
             color: #fff;
         }
-
-        /* Footer */
-        footer {
-            background: rgba(15, 15, 20, 0.95);
-            padding: 60px 20px 40px;
-            margin-top: 80px;
-            text-align: center;
-            border-top: 1px solid rgba(0, 200, 255, 0.2);
+        
+        /* New About and Code panel styles */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--arc-reactor-blue);
+            top: 0;
+            bottom: 0;
+            left: 50px;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            display: flex;
+        }
+        
+        .timeline-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--ironman-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-right: 30px;
+            flex-shrink: 0;
+            z-index: 1;
+        }
+        
+        .timeline-content {
+            background: rgba(40, 40, 45, 0.8);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--ironman-gold);
+            flex-grow: 1;
+        }
+        
+        .timeline-content h3 {
+            color: var(--ironman-gold);
+            margin-bottom: 15px;
+        }
+        
+        .timeline-content p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content ul {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+        
+        .timeline-content li {
+            margin-bottom: 8px;
+            color: #ccc;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .skill-card {
+            background: rgba(30, 30, 35, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 200, 255, 0.2);
+        }
+        
+        .skill-card h4 {
+            color: var(--arc-reactor-blue);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .skill-card p {
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        /* Code panel styles */
+        .code-preview {
+            background: #1a1a25;
+            padding: 20px;
+            border-radius: 8px;
+            overflow: auto;
+            margin: 20px 0;
+            border: 1px solid rgba(0, 200, 255, 0.2);
+        }
+        
+        .code-preview pre {
+            color: #f8f8f2;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        .feature-list {
+            columns: 2;
+            column-gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .feature-list li {
+            margin-bottom: 10px;
+            color: #ccc;
+            break-inside: avoid;
         }
 
+        /* Contact Panel */
         .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
 
         .contact-card {
             background: rgba(40, 40, 45, 0.8);
-            padding: 25px;
+            padding: 30px;
             border-radius: 8px;
-            min-width: 250px;
             border: 1px solid rgba(0, 200, 255, 0.2);
             transition: var(--transition);
+            text-align: center;
         }
 
         .contact-card:hover {
@@ -459,27 +622,38 @@
         }
 
         .contact-card i {
-            font-size: 36px;
+            font-size: 48px;
             color: var(--arc-reactor-blue);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
-        .contact-card h4 {
-            font-size: 20px;
+        .contact-card h3 {
+            font-size: 24px;
             color: var(--ironman-gold);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-family: 'Orbitron', sans-serif;
         }
 
         .contact-card p, .contact-card a {
             color: #ccc;
-            font-size: 16px;
+            font-size: 18px;
             text-decoration: none;
             transition: var(--transition);
+            display: block;
+            margin-bottom: 10px;
         }
 
         .contact-card a:hover {
             color: var(--arc-reactor-blue);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 15, 20, 0.95);
+            padding: 60px 20px 40px;
+            margin-top: 80px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 200, 255, 0.2);
         }
 
         .social-icons {
@@ -556,6 +730,10 @@
             .pub-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .feature-list {
+                columns: 1;
+            }
         }
 
         @media (max-width: 768px) {
@@ -570,6 +748,27 @@
             .profile-content h2 {
                 font-size: 28px;
             }
+            
+            .panel-header h2 {
+                font-size: 24px;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
@@ -577,8 +776,8 @@
     <!-- App Bar -->
     <div class="app-bar">
         <div class="app-title">
-            <i class="fas fa-hat-cowboy"></i>
-            <h1>SWARAG THAIKKANDI | RESEARCHER</h1>
+            <i class="fas fa-brain"></i>
+            <h1>SWARAG THAIKKANDI | NEUROSCIENCE RESEARCHER</h1>
         </div>
         <div class="app-actions">
             <div class="app-btn">
@@ -618,7 +817,7 @@
         <div class="tiles-container">
             <!-- Intro Tile -->
             <div class="tile-container">
-                <div class="win8-tile">
+                <div class="win8-tile" data-section="intro">
                     <div class="tile-face tile-front tile-red">
                         <div class="tile-icon">
                             <i class="fas fa-seedling"></i>
@@ -628,7 +827,7 @@
                     <div class="tile-face tile-back">
                         <h4>My Journey</h4>
                         <p>From physics to neuroscience and cognitive modeling. Explore my academic evolution and research philosophy.</p>
-                        <a href="#" class="tile-btn">
+                        <a class="tile-btn open-section">
                             <i class="fas fa-book-open"></i> Read More
                         </a>
                     </div>
@@ -637,7 +836,7 @@
 
             <!-- Papers Tile -->
             <div class="tile-container">
-                <div class="win8-tile">
+                <div class="win8-tile" data-section="papers">
                     <div class="tile-face tile-front tile-blue">
                         <div class="tile-icon">
                             <i class="fas fa-file-alt"></i>
@@ -647,7 +846,7 @@
                     <div class="tile-face tile-back">
                         <h4>Published Research</h4>
                         <p>Peer-reviewed journal articles and publications in neuroscience and cognitive science.</p>
-                        <a href="#" class="tile-btn">
+                        <a class="tile-btn open-section">
                             <i class="fas fa-scroll"></i> View Publications
                         </a>
                     </div>
@@ -656,7 +855,7 @@
 
             <!-- Pre-prints Tile -->
             <div class="tile-container">
-                <div class="win8-tile">
+                <div class="win8-tile" data-section="preprints">
                     <div class="tile-face tile-front tile-gold">
                         <div class="tile-icon">
                             <i class="fas fa-file-contract"></i>
@@ -666,7 +865,7 @@
                     <div class="tile-face tile-back">
                         <h4>Work in Progress</h4>
                         <p>Pre-print publications and ongoing research projects awaiting peer review.</p>
-                        <a href="#" class="tile-btn">
+                        <a class="tile-btn open-section">
                             <i class="fas fa-cloud-download-alt"></i> Access Pre-prints
                         </a>
                     </div>
@@ -675,7 +874,7 @@
 
             <!-- Conferences Tile -->
             <div class="tile-container">
-                <div class="win8-tile">
+                <div class="win8-tile" data-section="conferences">
                     <div class="tile-face tile-front tile-red">
                         <div class="tile-icon">
                             <i class="fas fa-chalkboard-teacher"></i>
@@ -685,7 +884,7 @@
                     <div class="tile-face tile-back">
                         <h4>Presentations & Talks</h4>
                         <p>Conference proceedings, presentations, and invited talks in cognitive science.</p>
-                        <a href="#" class="tile-btn">
+                        <a class="tile-btn open-section">
                             <i class="fas fa-microphone"></i> View Presentations
                         </a>
                     </div>
@@ -694,7 +893,7 @@
 
             <!-- About Tile -->
             <div class="tile-container">
-                <div class="win8-tile">
+                <div class="win8-tile" data-section="about">
                     <div class="tile-face tile-front tile-blue">
                         <div class="tile-icon">
                             <i class="fas fa-user-graduate"></i>
@@ -704,7 +903,7 @@
                     <div class="tile-face tile-back">
                         <h4>Academic Background</h4>
                         <p>My education, research interests, technical skills, and academic journey timeline.</p>
-                        <a href="#" class="tile-btn">
+                        <a class="tile-btn open-section">
                             <i class="fas fa-history"></i> Explore Timeline
                         </a>
                     </div>
@@ -713,7 +912,7 @@
 
             <!-- Contact Tile -->
             <div class="tile-container">
-                <div class="win8-tile">
+                <div class="win8-tile" data-section="contact">
                     <div class="tile-face tile-front tile-gold">
                         <div class="tile-icon">
                             <i class="fas fa-envelope"></i>
@@ -723,7 +922,7 @@
                     <div class="tile-face tile-back">
                         <h4>Get In Touch</h4>
                         <p>Connect with me for collaborations, speaking engagements, or research inquiries.</p>
-                        <a href="#" class="tile-btn">
+                        <a class="tile-btn open-section">
                             <i class="fas fa-paper-plane"></i> Reach Out
                         </a>
                     </div>
@@ -732,7 +931,7 @@
 
             <!-- Code Tile -->
             <div class="tile-container">
-                <div class="win8-tile">
+                <div class="win8-tile" data-section="code">
                     <div class="tile-face tile-front tile-red">
                         <div class="tile-icon">
                             <i class="fas fa-code"></i>
@@ -742,7 +941,7 @@
                     <div class="tile-face tile-back">
                         <h4>Projects & Tools</h4>
                         <p>Open-source repositories, libraries, and tools developed for neuroscience research.</p>
-                        <a href="#" class="tile-btn">
+                        <a class="tile-btn open-section">
                             <i class="fab fa-github"></i> Explore Code
                         </a>
                     </div>
@@ -768,13 +967,38 @@
                 </a>
             </div>
         </div>
+    </div>
 
-        <!-- Publications Sections -->
-        <div class="publications">
-            <h2 class="section-title">Research Publications</h2>
-            
-            <!-- Papers Section -->
-            <h3 class="section-title" style="font-size: 26px; margin-top: 40px;">Journal Papers</h3>
+    <!-- Section Panels -->
+    <!-- Intro Panel -->
+    <div class="section-panel" id="intro-panel">
+        <div class="panel-header">
+            <h2>Introduction</h2>
+            <div class="close-btn">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="panel-content">
+            <div class="pub-item">
+                <h3>My Academic Journey</h3>
+                <p>Raised in the heart of a village in Kerala, my academic journey emerged from contemplations on the meaning of self, life, and the enigma of reality. What particularly fascinated me was the intricate interplay between financial decisions, especially in a middle-class setting, and the pervasive spread of superstitious beliefs.</p>
+                
+                <p>The juxtaposition of significant life choices made with little deliberation alongside the propagation of unfounded beliefs challenged my understanding of objective truth. It compelled me to reevaluate reality through the lens of subjective beliefs, resembling the adaptive nature of a Bayesian model. This dual fascination forms the core of my research interests in neuroscience, decision-making, and cognitive modelling.</p>
+                
+                <p>I first fell for physics during my early days at IISER Pune. In my second year, I found myself wondering if there might be something even deeper than the physical reality we probe with equations and experiments—what truly shapes the world we perceive? A conversation with a humanities professor led me to Carlos Castaneda’s Teachings of Don Juan.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Papers Panel -->
+    <div class="section-panel" id="papers-panel">
+        <div class="panel-header">
+            <h2>Journal Publications</h2>
+            <div class="close-btn">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="panel-content">
             <div class="pub-grid">
                 <div class="pub-item">
                     <h3>Interpersonal heart rate synchrony predicts effective information processing in a naturalistic group decision-making task</h3>
@@ -790,9 +1014,18 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Pre-prints Section -->
-            <h3 class="section-title" style="font-size: 26px; margin-top: 60px;">Pre-prints</h3>
+        </div>
+    </div>
+    
+    <!-- Pre-prints Panel -->
+    <div class="section-panel" id="preprints-panel">
+        <div class="panel-header">
+            <h2>Pre-print Publications</h2>
+            <div class="close-btn">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="panel-content">
             <div class="pub-grid">
                 <div class="pub-item">
                     <h3>Analyzing time series of unequal durations using Multidimensional Recurrence Quantification Analysis (MdRQA): validation and implementation using Python</h3>
@@ -822,9 +1055,18 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Conferences Section -->
-            <h3 class="section-title" style="font-size: 26px; margin-top: 60px;">Conference Presentations</h3>
+        </div>
+    </div>
+    
+    <!-- Conferences Panel -->
+    <div class="section-panel" id="conferences-panel">
+        <div class="panel-header">
+            <h2>Conference Presentations</h2>
+            <div class="close-btn">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="panel-content">
             <div class="pub-grid">
                 <div class="pub-item">
                     <h3>Interpersonal heart rate synchrony predicts effective group performance in a naturalistic collective decision-making task</h3>
@@ -850,29 +1092,183 @@
             </div>
         </div>
     </div>
-
-    <!-- Footer with Contact -->
-    <footer>
-        <div class="contact-info">
-            <div class="contact-card">
-                <i class="fas fa-envelope"></i>
-                <h4>Email</h4>
-                <a href="mailto:contact@example.com">contact@example.com</a>
-            </div>
-            
-            <div class="contact-card">
-                <i class="fas fa-map-marker-alt"></i>
-                <h4>Location</h4>
-                <p>Pune, Maharashtra, India</p>
-            </div>
-            
-            <div class="contact-card">
-                <i class="fas fa-download"></i>
-                <h4>Downloads</h4>
-                <a href="#">Curriculum Vitae</a>
+    
+    <!-- About Panel -->
+    <div class="section-panel" id="about-panel">
+        <div class="panel-header">
+            <h2>About Me</h2>
+            <div class="close-btn">
+                <i class="fas fa-times"></i>
             </div>
         </div>
-        
+        <div class="panel-content">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Indian Institute of Science Education and Research (IISER), Pune</h3>
+                        <p><strong>Location:</strong> Pune, Maharashtra, India</p>
+                        <p><em>
+                            An autonomous institute under the Ministry of Education, Government of India.<br>
+                            Declared as an Institute of National Importance by an Act of Parliament.<br>
+                            Premier institute dedicated to research and teaching in the basic sciences.
+                        </em></p>
+                        <p><strong>Program:</strong> BS-MS Dual Degree (Division of Biology)</p>
+                        <p><strong>Duration:</strong> 2018–2023</p>
+                        <p><strong>CGPA:</strong> 8.2 / 10</p>
+                        <p><strong>Master's Thesis:</strong> "Effect of Uncertainty and Valence in Reinforcement Learning" (GPA: 9.1 / 10)</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Research Interests</h3>
+                        <p>My research focuses on the intersection of neuroscience, cognitive modeling, and decision-making processes.</p>
+                        <ul>
+                            <li>Attractor dynamics in working memory</li>
+                            <li>Reinforcement learning under uncertainty</li>
+                            <li>Interpersonal physiological synchrony</li>
+                            <li>Bayesian models of cognition</li>
+                            <li>Social influences on decision-making</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Technical Skills</h3>
+                        <div class="skills-grid">
+                            <div class="skill-card">
+                                <h4>Programming</h4>
+                                <p>Python, MATLAB, R, JavaScript</p>
+                            </div>
+                            <div class="skill-card">
+                                <h4>Data Analysis</h4>
+                                <p>Pandas, NumPy, SciPy, Statsmodels</p>
+                            </div>
+                            <div class="skill-card">
+                                <h4>Modeling</h4>
+                                <p>PyTorch, TensorFlow, Stan</p>
+                            </div>
+                            <div class="skill-card">
+                                <h4>Visualization</h4>
+                                <p>Matplotlib, Seaborn, Plotly</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Code Panel -->
+    <div class="section-panel" id="code-panel">
+        <div class="panel-header">
+            <h2>Codes & Packages</h2>
+            <div class="close-btn">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="panel-content">
+            <div class="pub-item">
+                <h3>SMdRQA</h3>
+                <p>SMdRQA is a Python package designed for conducting Sliding Window Multidimensional Recurrent Quantification Analysis (SMdRQA). This specialized analysis technique allows researchers to explore temporal patterns and dependencies in multidimensional data sequences using a sliding window approach.</p>
+                <div class="pub-links" style="margin-top: 20px;">
+                    <a href="https://swaragthaikkandi.github.io/SMdRQA/" class="pub-link" target="_blank">
+                        <i class="fas fa-book"></i> Documentation
+                    </a>
+                    <a href="https://pypi.org/project/SMdRQA/" class="pub-link" target="_blank">
+                        <i class="fab fa-python"></i> PyPI
+                    </a>
+                </div>
+                
+                <div class="code-preview">
+                    <pre># Example usage of SMdRQA
+from SMdRQA.RP_maker import RP_computer
+
+from SMdRQA.Extract_from_RP import Mode
+from SMdRQA.Extract_from_RP import Check_Int_Array
+from SMdRQA.Extract_from_RP import Sliding_window
+from SMdRQA.Extract_from_RP import Whole_window
+from SMdRQA.Extract_from_RP import windowed_RP
+from SMdRQA.Extract_from_RP import First_middle_last_avg
+from SMdRQA.Extract_from_RP import First_middle_last_sliding_windows
+from SMdRQA.Extract_from_RP import First_middle_last_sliding_windows_all_vars
+
+# Create RPs
+RP_computer(input_path, RP_dir)    # generating RPs and saving to the specified folder
+
+
+# Compute RQA metrics and save
+Dict_RPs=windowed_RP(window_size, 'RP')                                                      # Specifying window size and folder in which RPs are saved
+First_middle_last_sliding_windows_all_vars(Dict_RPs,'example_data.csv')</pre>
+                </div>
+            </div>
+            
+            <div class="pub-item">
+                <h3>Features</h3>
+                <ul class="feature-list">
+                    <li>Sliding window analysis of multidimensional time series</li>
+                    <li>Multiple recurrence quantification measures</li>
+                    <li>Efficient computation using NumPy</li>
+                    <li>Comprehensive documentation with examples</li>
+                    <li>Compatible with SciPy ecosystem</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contact Panel -->
+    <div class="section-panel" id="contact-panel">
+        <div class="panel-header">
+            <h2>Contact Information</h2>
+            <div class="close-btn">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="panel-content">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <a href="mailto:contact@example.com">contact@example.com</a>
+                    <p>For research inquiries and collaborations</p>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Pune, Maharashtra, India</p>
+                    <p>Available for meetings and collaborations</p>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-download"></i>
+                    <h3>Curriculum Vitae</h3>
+                    <a href="#">Download PDF</a>
+                    <p>Updated: July 2023</p>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Research Statement</h3>
+                    <a href="#">Download PDF</a>
+                    <p>My research vision and methodology</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
         <div class="social-icons">
             <a href="https://x.com/swarag_t" class="social-icon" target="_blank">
                 <i class="fab fa-twitter"></i>
@@ -894,11 +1290,11 @@
             </a>
         </div>
         
-        <p class="copyright">© 2023 Swarag Thaikkandi. All rights reserved.<br>
+        <p class="copyright">© 2023 Swarag Thaikkandi. All rights reserved.<br></p>
     </footer>
 
     <script>
-        // Initialize tile animations
+        // Initialize tile animations and section panels
         document.addEventListener('DOMContentLoaded', function() {
             // Add animation delays to tiles
             const tiles = document.querySelectorAll('.tile-container');
@@ -922,6 +1318,52 @@
                         alert('Profile options would appear here');
                     } else if (this.querySelector('.fa-cog')) {
                         alert('Settings panel would open here');
+                    }
+                });
+            });
+            
+            // Section panel functionality
+            const openButtons = document.querySelectorAll('.open-section');
+            const closeButtons = document.querySelectorAll('.close-btn');
+            const panels = document.querySelectorAll('.section-panel');
+            
+            // Open section panels
+            openButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tile = this.closest('.win8-tile');
+                    const section = tile.getAttribute('data-section');
+                    
+                    // Hide all panels
+                    panels.forEach(panel => {
+                        panel.classList.remove('active');
+                    });
+                    
+                    // Show the selected panel
+                    const panelId = `${section}-panel`;
+                    const panel = document.getElementById(panelId);
+                    if (panel) {
+                        panel.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            // Close section panels
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const panel = this.closest('.section-panel');
+                    panel.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+            
+            // Close panel when clicking outside content
+            panels.forEach(panel => {
+                panel.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                        document.body.style.overflow = '';
                     }
                 });
             });
