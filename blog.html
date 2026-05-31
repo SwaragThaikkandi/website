@@ -1,48 +1,95 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blog – Swarag Thaikkandi</title>
-  <link rel="stylesheet" href="assets/css/main.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Swarag Thaikkandi</title>
+  <meta name="description" content="Short essays, field notes, and reflections by Swarag Thaikkandi. Some posts in Malayalam.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700&family=Noto+Serif+Malayalam:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches)
+          document.documentElement.setAttribute("data-theme", "light");
+      } catch (e) {}
+    })();
+  </script>
 </head>
-<body class="is-preload">
-  <div id="wrapper">
-    <!-- copy your header from index.html, but change the active nav item -->
-    <header id="header">
-      <!-- ... logo and intro ... -->
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <!-- ... other links ... -->
-          <li class="active"><a href="blog.html">Blog</a></li>
-        </ul>
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html#home">Swarag<span>.</span>Thaikkandi</a>
+      <nav class="nav" id="primary-nav">
+        <a href="index.html#focus">Focus</a>
+        <a href="index.html#work">Publications</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#about">About</a>
+        <a href="blog.html">Blog</a>
+        <a class="btn ghost" href="index.html#contact">Contact</a>
       </nav>
-    </header>
-
-    <div id="main">
-      <article id="blog-list">
-        <h2 class="major">Blog</h2>
-
-        <!-- Example Post 1 -->
-        <section class="post-preview">
-          <h3><a href="blog_contents/post1.html"></a>A</h3>
-          <p>കടൽ പുറത്തായിരുന്നോ ഉള്ളിലായിരുന്നോ എന്നവനറിയില്ല. പക്ഷെ, അത് എന്തൊക്കെയോ ആയിരുന്നു.</p>
-        </section>
-
-        <!-- Example Post 2 -->
-        <section class="post-preview">
-          <h3><a href="blog_contents/post2.html">B</a></h3>
-          <p></p>
-        </section>
-
-        <!-- Add more posts here in the same pattern -->
-      </article>
+      <div class="nav-tools">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Toggle color theme">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+          <i class="fas fa-sun" aria-hidden="true"></i>
+        </button>
+        <button class="icon-btn nav-toggle" type="button" aria-label="Toggle menu" aria-controls="primary-nav" aria-expanded="false">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
     </div>
+  </header>
 
-    <footer id="footer">
-      <p>&copy; Swarag Thaikkandi. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-    </footer>
-  </div>
+  <main>
+    <section class="blog-hero">
+      <div class="container">
+        <p class="eyebrow reveal">Notebook</p>
+        <h1 class="section-title reveal">Blog</h1>
+        <p class="section-subtitle reveal delay-1">Short essays, field notes, and reflections. Some posts are in Malayalam.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 24px;">
+      <div class="container">
+        <div class="post-grid">
+          <article class="post-card reveal delay-1">
+            <h3>കടൽ</h3>
+            <p>കടൽ എന്നും അവനൊരു പ്രഹേളിക ആയിരുന്നു. ചിലപ്പോൾ ചിരിച്ചുകൊണ്ട് തീരത്തെ തഴുകിയും ചിലപ്പോൾ രൗദ്രമായി തീരത്തെ അക്രമിച്ചുംകൊണ്ടിരുന്നു അത്.</p>
+            <a class="btn ghost" href="blog_contents/post1.html">Read post</a>
+          </article>
+          <article class="post-card reveal delay-2">
+            <h3>More Coming Soon</h3>
+            <p>When a new post is ready, add it here with a short excerpt and link.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="socials">
+        <a href="https://x.com/swarag_t" target="_blank" rel="noopener" aria-label="X (Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="https://in.linkedin.com/in/swarag-t-2b998a1b5" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="https://github.com/SwaragThaikkandi" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://orcid.org/0009-0007-8101-2378" target="_blank" rel="noopener" aria-label="ORCID"><i class="fab fa-orcid" aria-hidden="true"></i></a>
+        <a href="https://www.researchgate.net/profile/Swarag-Thaikkandi" target="_blank" rel="noopener" aria-label="ResearchGate"><i class="fab fa-researchgate" aria-hidden="true"></i></a>
+        <a href="https://scholar.google.com/citations?user=fg81xJQAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a>
+      </div>
+      <p class="tagline">© <span data-year>2026</span> Swarag Thaikkandi. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button class="to-top" type="button" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+
+  <script src="assets/js/site.js"></script>
 </body>
 </html>

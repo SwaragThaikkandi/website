@@ -1,0 +1,10 @@
+# Visual Studio cache
+.vs/
+
+# Claude Code local dev helpers
+.claude/
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
+*.sqlite
