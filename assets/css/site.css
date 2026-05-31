@@ -896,3 +896,130 @@ a {
   .footer-inner { flex-direction: column; align-items: flex-start; }
   .to-top { right: 16px; bottom: 16px; }
 }
+
+/* =============================================================
+   Poetic layer — diffusion field, living light, shimmer
+   ============================================================= */
+
+/* Skip link — keyboard ergonomics */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 300;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--accent-2);
+  color: #06100e;
+  font-weight: 600;
+  transition: top 0.2s var(--ease);
+}
+.skip-link:focus { top: 12px; }
+
+/* Hero as a layered stage */
+.hero { isolation: isolate; overflow: clip; }
+
+.hero-canvas,
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* drifting node/diffusion field */
+.hero-canvas {
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+
+/* soft light that follows the cursor — the page "looks back" */
+.hero-glow {
+  background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 28%),
+    var(--glow-2), transparent 62%);
+  opacity: 0;
+  mix-blend-mode: screen;
+  transition: opacity 0.5s var(--ease);
+}
+.hero:hover .hero-glow { opacity: 0.7; }
+
+/* Name written in shifting light */
+.hero h1 {
+  background: linear-gradient(100deg,
+    var(--heading) 0%, var(--heading) 38%,
+    var(--accent-2) 52%, var(--accent) 66%,
+    var(--heading) 82%, var(--heading) 100%);
+  background-size: 240% 100%;
+  background-position: 0% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer 11s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 0; }
+  50% { background-position: 100% 0; }
+}
+
+/* gentle bob on the portrait, like a buoy on calm water */
+.hero-portrait {
+  animation: bob 7s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Living light on cards — a sheen that tracks the pointer */
+.card,
+.contact-card,
+.post-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after,
+.contact-card::after,
+.post-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.09), transparent 60%);
+  transition: opacity 0.4s var(--ease);
+  z-index: 0;
+}
+[data-theme="light"] .card::after,
+[data-theme="light"] .contact-card::after,
+[data-theme="light"] .post-card::after {
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(31, 156, 135, 0.1), transparent 60%);
+}
+
+.card:hover::after,
+.contact-card:hover::after,
+.post-card:hover::after { opacity: 1; }
+
+/* keep card content above the sheen */
+.card > *,
+.contact-card > *,
+.post-card > * { position: relative; z-index: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero h1 { animation: none; }
+  .hero-portrait { animation: none; }
+  .hero-glow { display: none; }
+}
+
+/* touch devices: drop pointer-light flourishes */
+@media (hover: none) {
+  .hero-glow { display: none; }
+  .card::after, .contact-card::after, .post-card::after { display: none; }
+}
