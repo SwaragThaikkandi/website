@@ -927,11 +927,11 @@ a {
   pointer-events: none;
 }
 
-/* drifting node/diffusion field */
+/* brain dynamics field */
 .hero-canvas {
   width: 100%;
   height: 100%;
-  opacity: 0.6;
+  opacity: 0.82;
 }
 
 /* soft light that follows the cursor — the page "looks back" */

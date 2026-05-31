@@ -1,5 +1,6 @@
 /* Swarag Thaikkandi — site interactions
-   Theme toggle · mobile nav · scroll reveal · active nav · scroll progress · back-to-top */
+   Theme · mobile nav · scroll reveal · active nav · progress · back-to-top
+   · pointer light · brain dynamics field */
 (function () {
   "use strict";
 
@@ -116,12 +117,6 @@
     sections.forEach(function (s) { io.observe(s); });
   }
 
-  /* ---------- Footer year ---------- */
-  function setYear() {
-    var el = document.querySelector("[data-year]");
-    if (el) el.textContent = new Date().getFullYear();
-  }
-
   /* ---------- Pointer-following light (hero glow + card sheen) ---------- */
   function bindPointerLight() {
     if (window.matchMedia && window.matchMedia("(hover: none)").matches) return;
@@ -144,103 +139,185 @@
     });
   }
 
-  /* ---------- Diffusion field — drifting nodes that link & lean toward you ---------- */
-  function diffusionField() {
+  /* ---------- Brain dynamics field ----------
+     Nodes sampled inside a brain silhouette, linked into a graph.
+     Activation pulses travel the edges = dynamic brain activity.
+     Colour blends teal -> amber across the cortex.                    */
+  function brainField() {
     var canvas = document.querySelector(".hero-canvas");
     if (!canvas || !canvas.getContext) return;
     var ctx = canvas.getContext("2d");
     var hero = canvas.parentElement;
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var w = 0, h = 0, nodes = [], raf = null, running = false;
-    var mouse = { x: -9999, y: -9999 };
-    var LINK = 130;
 
-    function resize() {
+    var w = 0, h = 0, S = 0, cx = 0, cy = 0, tms = 0;
+    var nodes = [], edges = [], pulses = [], raf = null, running = false;
+
+    // brain = union of overlapping lumps (side profile, bilobed cortex)
+    var LUMPS = [
+      [-0.05, -0.02, 0.62],
+      [-0.55, -0.12, 0.40],
+      [-0.28, -0.42, 0.38],
+      [ 0.12, -0.46, 0.40],
+      [ 0.50, -0.20, 0.40],
+      [ 0.55,  0.12, 0.36],
+      [ 0.20,  0.32, 0.40],
+      [-0.20,  0.34, 0.40],
+      [-0.55,  0.20, 0.36],
+      [-0.74,  0.36, 0.22],   // cerebellum
+      [-0.60,  0.60, 0.13]    // brainstem
+    ];
+
+    function inBrain(nx, ny) {
+      for (var i = 0; i < LUMPS.length; i++) {
+        var dx = nx - LUMPS[i][0], dy = ny - LUMPS[i][1];
+        if (dx * dx + dy * dy < LUMPS[i][2] * LUMPS[i][2]) {
+          if (Math.abs(nx) < 0.045 && ny < -0.05) return false; // midline fissure
+          return true;
+        }
+      }
+      return false;
+    }
+
+    // teal (121,214,196) -> amber (224,147,95)
+    function tint(t, a) {
+      var r = Math.round(121 + 103 * t);
+      var g = Math.round(214 - 67 * t);
+      var b = Math.round(196 - 101 * t);
+      return "rgba(" + r + "," + g + "," + b + "," + a + ")";
+    }
+
+    function px(n) { return cx + n.nx * S + Math.sin(tms * 0.0011 + n.ph) * n.amp; }
+    function py(n) { return cy + n.ny * S + Math.cos(tms * 0.0013 + n.ph) * n.amp; }
+
+    function build() {
       w = hero.clientWidth;
       h = hero.clientHeight;
+      if (!w || !h) return;
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var count = Math.round(Math.min(72, Math.max(26, (w * h) / 15000)));
+      S = Math.min(w, h) * 0.46;
+      cx = w * 0.5;
+      cy = h * 0.47;
+
+      var target = Math.round(Math.min(150, Math.max(70, (S * S) / 380)));
       nodes = [];
-      for (var i = 0; i < count; i++) {
+      var tries = 0;
+      while (nodes.length < target && tries < target * 80) {
+        tries++;
+        var nx = Math.random() * 2.2 - 1.1;
+        var ny = Math.random() * 2.0 - 1.0;
+        if (!inBrain(nx, ny)) continue;
         nodes.push({
-          x: Math.random() * w,
-          y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.25,
-          vy: (Math.random() - 0.5) * 0.25
+          nx: nx, ny: ny,
+          t: Math.min(1, Math.max(0, (nx + 1) / 2)),
+          ph: Math.random() * 6.2832,
+          amp: 2 + Math.random() * 3
+        });
+      }
+
+      edges = [];
+      var R = 0.30, R2 = R * R;
+      for (var i = 0; i < nodes.length; i++) {
+        for (var j = i + 1; j < nodes.length; j++) {
+          var dx = nodes[i].nx - nodes[j].nx, dy = nodes[i].ny - nodes[j].ny;
+          var d2 = dx * dx + dy * dy;
+          if (d2 < R2) edges.push({ a: i, b: j, w: 1 - Math.sqrt(d2) / R });
+        }
+      }
+
+      pulses = [];
+      var want = Math.min(28, Math.round(edges.length / 12));
+      for (var k = 0; k < want && edges.length; k++) {
+        pulses.push({
+          e: (Math.random() * edges.length) | 0,
+          t: Math.random(),
+          sp: 0.004 + Math.random() * 0.011
         });
       }
     }
 
     function render(animate) {
       ctx.clearRect(0, 0, w, h);
-      var i, j, p;
-      if (animate) {
-        for (i = 0; i < nodes.length; i++) {
-          p = nodes[i];
-          p.vx += (Math.random() - 0.5) * 0.04;   // brownian jitter — diffusion
-          p.vy += (Math.random() - 0.5) * 0.04;
-          p.vx *= 0.96; p.vy *= 0.96;
-          var dx = mouse.x - p.x, dy = mouse.y - p.y, d2 = dx * dx + dy * dy;
-          if (d2 < 26000) { p.vx += dx * 0.0005; p.vy += dy * 0.0005; } // lean toward cursor
-          p.x += p.vx; p.y += p.vy;
-          if (p.x < 0) p.x += w; else if (p.x > w) p.x -= w;
-          if (p.y < 0) p.y += h; else if (p.y > h) p.y -= h;
-        }
+      var k, e, A, B, ax, ay, bx, by;
+
+      for (k = 0; k < edges.length; k++) {
+        e = edges[k]; A = nodes[e.a]; B = nodes[e.b];
+        ax = px(A); ay = py(A); bx = px(B); by = py(B);
+        ctx.strokeStyle = tint((A.t + B.t) / 2, 0.13 * e.w + 0.05);
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(ax, ay);
+        ctx.lineTo(bx, by);
+        ctx.stroke();
       }
-      for (i = 0; i < nodes.length; i++) {
-        for (j = i + 1; j < nodes.length; j++) {
-          var ax = nodes[i].x - nodes[j].x, ay = nodes[i].y - nodes[j].y;
-          var dist = Math.sqrt(ax * ax + ay * ay);
-          if (dist < LINK) {
-            ctx.strokeStyle = "rgba(121,214,196," + (0.16 * (1 - dist / LINK)).toFixed(3) + ")";
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.stroke();
+
+      for (k = 0; k < pulses.length; k++) {
+        var pu = pulses[k];
+        e = edges[pu.e];
+        if (!e) { pulses.splice(k, 1); k--; continue; }
+        A = nodes[e.a]; B = nodes[e.b];
+        ax = px(A); ay = py(A); bx = px(B); by = py(B);
+        var x = ax + (bx - ax) * pu.t, y = ay + (by - ay) * pu.t;
+        var c = tint(A.t + (B.t - A.t) * pu.t, 0.95);
+        ctx.fillStyle = c;
+        ctx.shadowColor = c;
+        ctx.shadowBlur = 9;
+        ctx.beginPath();
+        ctx.arc(x, y, 2.1, 0, 6.2832);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        if (animate) {
+          pu.t += pu.sp;
+          if (pu.t > 1) {
+            pu.e = (Math.random() * edges.length) | 0;
+            pu.t = 0;
+            pu.sp = 0.004 + Math.random() * 0.011;
           }
         }
       }
-      for (i = 0; i < nodes.length; i++) {
-        ctx.fillStyle = "rgba(224,147,95,0.7)";
+
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        ctx.fillStyle = tint(n.t, 0.85);
         ctx.beginPath();
-        ctx.arc(nodes[i].x, nodes[i].y, 1.7, 0, 6.2832);
+        ctx.arc(px(n), py(n), 1.7, 0, 6.2832);
         ctx.fill();
       }
     }
 
-    function loop() {
+    function loop(ts) {
+      tms = ts || 0;
       render(true);
       raf = requestAnimationFrame(loop);
     }
-    function start() { if (!running) { running = true; loop(); } }
+    function start() { if (!running) { running = true; raf = requestAnimationFrame(loop); } }
     function stop() { running = false; if (raf) cancelAnimationFrame(raf); }
-
-    hero.addEventListener("pointermove", function (e) {
-      var r = hero.getBoundingClientRect();
-      mouse.x = e.clientX - r.left;
-      mouse.y = e.clientY - r.top;
-    });
-    hero.addEventListener("pointerleave", function () { mouse.x = -9999; mouse.y = -9999; });
 
     var t;
     window.addEventListener("resize", function () {
       clearTimeout(t);
-      t = setTimeout(function () { resize(); if (reduce) render(false); }, 200);
+      t = setTimeout(function () { build(); if (reduce) render(false); }, 200);
     });
 
-    resize();
+    build();
+    if (!nodes.length) { return; }
     if (reduce) { render(false); return; }
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(function (entries) {
         entries[0].isIntersecting ? start() : stop();
-      }, { threshold: 0.02 }).observe(hero);
+      }, { threshold: 0.01 }).observe(hero);
     } else {
       start();
     }
+  }
+
+  /* ---------- Footer year ---------- */
+  function setYear() {
+    var el = document.querySelector("[data-year]");
+    if (el) el.textContent = new Date().getFullYear();
   }
 
   function init() {
@@ -251,7 +328,7 @@
     bindReveal();
     bindScrollSpy();
     bindPointerLight();
-    diffusionField();
+    brainField();
     setYear();
   }
 
